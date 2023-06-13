@@ -107,9 +107,9 @@ export const ldapSignInHandler: RequestHandler<
   } else {
     if (username) {
       user = await getUserByEmail(ldapUserProfile[ldap_attr.email]);
-
     }
-    if (!user && process.env.AUTH_PROVIDER_LDAP_ALLOW_AUTO_SIGNUP) {
+    if (!user) {
+      if(!process.env.AUTH_PROVIDER_LDAP_ALLOW_AUTO_SIGNUP) return sendError(res, 'user-not-found');
       // * No user found with this email. Create a new user
       const passwordHash = null;
       const email = ldapUserProfile[ldap_attr.email];
@@ -148,6 +148,9 @@ export const ldapSignInHandler: RequestHandler<
         logger.warn('Could not add a provider to user');
         return sendError(res, 'internal-error', {}, true);
       }
+    } else {
+      logger.warn('Could not find or create user');
+      return sendError(res, 'internal-error', {}, true);
     }
   }
 
