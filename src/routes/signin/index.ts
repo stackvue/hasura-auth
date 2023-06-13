@@ -23,6 +23,7 @@ import {
   signInWebauthnHandler,
   signInWebauthnSchema,
 } from './webauthn';
+import { ldapSignInHandler, ldapSignInSchema } from './ldap';
 
 const router = Router();
 
@@ -40,6 +41,22 @@ router.post(
   '/signin/email-password',
   bodyValidator(signInEmailPasswordSchema),
   aw(signInEmailPasswordHandler)
+);
+
+/**
+ * POST /signin/ldap
+ * @summary Authenticate with email + password
+ * @param {SignInEmailPasswordSchema} request.body.required
+ * @return {SessionPayload} 200 - Signed in successfully - application/json
+ * @return {InvalidRequestError} 400 - The payload is invalid - application/json
+ * @return {UnauthorizedError} 401 - Invalid email or password, or user is not verified - application/json
+ * @return {DisabledEndpointError} 404 - The feature is not activated - application/json
+ * @tags Authentication
+ */
+router.post(
+  '/signin/ldap',
+  bodyValidator(ldapSignInSchema),
+  aw(ldapSignInHandler)
 );
 
 /**
