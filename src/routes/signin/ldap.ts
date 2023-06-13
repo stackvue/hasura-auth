@@ -109,7 +109,7 @@ export const ldapSignInHandler: RequestHandler<
       user = await getUserByEmail(ldapUserProfile[ldap_attr.email]);
     }
     if (!user) {
-      if(!process.env.AUTH_PROVIDER_LDAP_ALLOW_AUTO_SIGNUP) return sendError(res, 'user-not-found');
+      if(process.env.AUTH_PROVIDER_LDAP_ALLOW_AUTO_SIGNUP == 'false') return sendError(res, 'user-not-found');
       // * No user found with this email. Create a new user
       const passwordHash = null;
       const email = ldapUserProfile[ldap_attr.email];
