@@ -155,8 +155,8 @@ export const ldapSignInHandler: RequestHandler<
   }
 
   if (user) {
-    if(user.disabled) return sendError(res, 'internal-error', {}, true);
-    if(!user.emailVerified) return sendError(res, 'disabled-user', {}, true);
+    if(user.disabled) return sendError(res, 'disabled-user', {}, true);
+    if(!user.emailVerified) return sendError(res, 'unverified-user', {}, true);
     const signInTokens = await getSignInResponse({
       userId: user.id,
       checkMFA: false,
