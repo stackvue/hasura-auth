@@ -7,5 +7,6 @@ data
 yarn-error.log
 package-lock.json
 
+.idea
 docker/data
 .env
