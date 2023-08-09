@@ -4,9 +4,15 @@ import * as Dom from 'graphql-request/dist/types.dom';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -88,7 +94,6 @@ export type AuthProviderRequests = {
   options?: Maybe<Scalars['jsonb']>;
 };
 
-
 /** Oauth requests, inserted before redirecting to the provider's site. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthProviderRequestsOptionsArgs = {
   path?: InputMaybe<Scalars['String']>;
@@ -108,7 +113,6 @@ export type AuthProviderRequests_Aggregate_Fields = {
   max?: Maybe<AuthProviderRequests_Max_Fields>;
   min?: Maybe<AuthProviderRequests_Min_Fields>;
 };
-
 
 /** aggregate fields of "auth.provider_requests" */
 export type AuthProviderRequests_Aggregate_FieldsCountArgs = {
@@ -133,7 +137,7 @@ export type AuthProviderRequests_Bool_Exp = {
 /** unique or primary key constraints on table "auth.provider_requests" */
 export enum AuthProviderRequests_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ProviderRequestsPkey = 'provider_requests_pkey'
+  ProviderRequestsPkey = 'provider_requests_pkey',
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
@@ -206,7 +210,7 @@ export enum AuthProviderRequests_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Options = 'options'
+  Options = 'options',
 }
 
 /** input type for updating data in table "auth.provider_requests" */
@@ -234,7 +238,7 @@ export enum AuthProviderRequests_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Options = 'options'
+  Options = 'options',
 }
 
 export type AuthProviderRequests_Updates = {
@@ -263,7 +267,6 @@ export type AuthProviders = {
   userProviders_aggregate: AuthUserProviders_Aggregate;
 };
 
-
 /** List of available Oauth providers. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthProvidersUserProvidersArgs = {
   distinct_on?: InputMaybe<Array<AuthUserProviders_Select_Column>>;
@@ -272,7 +275,6 @@ export type AuthProvidersUserProvidersArgs = {
   order_by?: InputMaybe<Array<AuthUserProviders_Order_By>>;
   where?: InputMaybe<AuthUserProviders_Bool_Exp>;
 };
-
 
 /** List of available Oauth providers. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthProvidersUserProviders_AggregateArgs = {
@@ -298,7 +300,6 @@ export type AuthProviders_Aggregate_Fields = {
   min?: Maybe<AuthProviders_Min_Fields>;
 };
 
-
 /** aggregate fields of "auth.providers" */
 export type AuthProviders_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<AuthProviders_Select_Column>>;
@@ -318,7 +319,7 @@ export type AuthProviders_Bool_Exp = {
 /** unique or primary key constraints on table "auth.providers" */
 export enum AuthProviders_Constraint {
   /** unique or primary key constraint on columns "id" */
-  ProvidersPkey = 'providers_pkey'
+  ProvidersPkey = 'providers_pkey',
 }
 
 /** input type for inserting data into table "auth.providers" */
@@ -376,7 +377,7 @@ export type AuthProviders_Pk_Columns_Input = {
 /** select columns of table "auth.providers" */
 export enum AuthProviders_Select_Column {
   /** column name */
-  Id = 'id'
+  Id = 'id',
 }
 
 /** input type for updating data in table "auth.providers" */
@@ -400,7 +401,7 @@ export type AuthProviders_Stream_Cursor_Value_Input = {
 /** update columns of table "auth.providers" */
 export enum AuthProviders_Update_Column {
   /** column name */
-  Id = 'id'
+  Id = 'id',
 }
 
 export type AuthProviders_Updates = {
@@ -420,7 +421,6 @@ export type AuthRefreshTokenTypes = {
   value: Scalars['String'];
 };
 
-
 /** columns and relationships of "auth.refresh_token_types" */
 export type AuthRefreshTokenTypesRefreshTokensArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokens_Select_Column>>;
@@ -429,7 +429,6 @@ export type AuthRefreshTokenTypesRefreshTokensArgs = {
   order_by?: InputMaybe<Array<AuthRefreshTokens_Order_By>>;
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
-
 
 /** columns and relationships of "auth.refresh_token_types" */
 export type AuthRefreshTokenTypesRefreshTokens_AggregateArgs = {
@@ -455,7 +454,6 @@ export type AuthRefreshTokenTypes_Aggregate_Fields = {
   min?: Maybe<AuthRefreshTokenTypes_Min_Fields>;
 };
 
-
 /** aggregate fields of "auth.refresh_token_types" */
 export type AuthRefreshTokenTypes_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<AuthRefreshTokenTypes_Select_Column>>;
@@ -476,14 +474,14 @@ export type AuthRefreshTokenTypes_Bool_Exp = {
 /** unique or primary key constraints on table "auth.refresh_token_types" */
 export enum AuthRefreshTokenTypes_Constraint {
   /** unique or primary key constraint on columns "value" */
-  RefreshTokenTypesPkey = 'refresh_token_types_pkey'
+  RefreshTokenTypesPkey = 'refresh_token_types_pkey',
 }
 
 export enum AuthRefreshTokenTypes_Enum {
   /** Personal access token */
   Pat = 'pat',
   /** Regular refresh token */
-  Regular = 'regular'
+  Regular = 'regular',
 }
 
 /** Boolean expression to compare columns of type "authRefreshTokenTypes_enum". All fields are combined with logical 'AND'. */
@@ -549,7 +547,7 @@ export enum AuthRefreshTokenTypes_Select_Column {
   /** column name */
   Comment = 'comment',
   /** column name */
-  Value = 'value'
+  Value = 'value',
 }
 
 /** input type for updating data in table "auth.refresh_token_types" */
@@ -577,7 +575,7 @@ export enum AuthRefreshTokenTypes_Update_Column {
   /** column name */
   Comment = 'comment',
   /** column name */
-  Value = 'value'
+  Value = 'value',
 }
 
 export type AuthRefreshTokenTypes_Updates = {
@@ -599,7 +597,6 @@ export type AuthRefreshTokens = {
   user: Users;
   userId: Scalars['uuid'];
 };
-
 
 /** User refresh tokens. Hasura auth uses them to rotate new access tokens as long as the refresh token is not expired. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthRefreshTokensMetadataArgs = {
@@ -631,7 +628,6 @@ export type AuthRefreshTokens_Aggregate_Fields = {
   max?: Maybe<AuthRefreshTokens_Max_Fields>;
   min?: Maybe<AuthRefreshTokens_Min_Fields>;
 };
-
 
 /** aggregate fields of "auth.refresh_tokens" */
 export type AuthRefreshTokens_Aggregate_FieldsCountArgs = {
@@ -676,7 +672,7 @@ export type AuthRefreshTokens_Bool_Exp = {
 /** unique or primary key constraints on table "auth.refresh_tokens" */
 export enum AuthRefreshTokens_Constraint {
   /** unique or primary key constraint on columns "id" */
-  RefreshTokensPkey = 'refresh_tokens_pkey'
+  RefreshTokensPkey = 'refresh_tokens_pkey',
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
@@ -797,7 +793,7 @@ export enum AuthRefreshTokens_Select_Column {
   /** column name */
   Type = 'type',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 /** input type for updating data in table "auth.refresh_tokens" */
@@ -845,7 +841,7 @@ export enum AuthRefreshTokens_Update_Column {
   /** column name */
   Type = 'type',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 export type AuthRefreshTokens_Updates = {
@@ -878,7 +874,6 @@ export type AuthRoles = {
   usersByDefaultRole_aggregate: Users_Aggregate;
 };
 
-
 /** Persistent Hasura roles for users. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthRolesUserRolesArgs = {
   distinct_on?: InputMaybe<Array<AuthUserRoles_Select_Column>>;
@@ -887,7 +882,6 @@ export type AuthRolesUserRolesArgs = {
   order_by?: InputMaybe<Array<AuthUserRoles_Order_By>>;
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
-
 
 /** Persistent Hasura roles for users. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthRolesUserRoles_AggregateArgs = {
@@ -898,7 +892,6 @@ export type AuthRolesUserRoles_AggregateArgs = {
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
 
-
 /** Persistent Hasura roles for users. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthRolesUsersByDefaultRoleArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
@@ -907,7 +900,6 @@ export type AuthRolesUsersByDefaultRoleArgs = {
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
-
 
 /** Persistent Hasura roles for users. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type AuthRolesUsersByDefaultRole_AggregateArgs = {
@@ -933,7 +925,6 @@ export type AuthRoles_Aggregate_Fields = {
   min?: Maybe<AuthRoles_Min_Fields>;
 };
 
-
 /** aggregate fields of "auth.roles" */
 export type AuthRoles_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<AuthRoles_Select_Column>>;
@@ -955,7 +946,7 @@ export type AuthRoles_Bool_Exp = {
 /** unique or primary key constraints on table "auth.roles" */
 export enum AuthRoles_Constraint {
   /** unique or primary key constraint on columns "role" */
-  RolesPkey = 'roles_pkey'
+  RolesPkey = 'roles_pkey',
 }
 
 /** input type for inserting data into table "auth.roles" */
@@ -1015,7 +1006,7 @@ export type AuthRoles_Pk_Columns_Input = {
 /** select columns of table "auth.roles" */
 export enum AuthRoles_Select_Column {
   /** column name */
-  Role = 'role'
+  Role = 'role',
 }
 
 /** input type for updating data in table "auth.roles" */
@@ -1039,7 +1030,7 @@ export type AuthRoles_Stream_Cursor_Value_Input = {
 /** update columns of table "auth.roles" */
 export enum AuthRoles_Update_Column {
   /** column name */
-  Role = 'role'
+  Role = 'role',
 }
 
 export type AuthRoles_Updates = {
@@ -1091,7 +1082,6 @@ export type AuthUserProviders_Aggregate_Fields = {
   min?: Maybe<AuthUserProviders_Min_Fields>;
 };
 
-
 /** aggregate fields of "auth.user_providers" */
 export type AuthUserProviders_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<AuthUserProviders_Select_Column>>;
@@ -1136,7 +1126,7 @@ export enum AuthUserProviders_Constraint {
   /** unique or primary key constraint on columns "provider_id", "provider_user_id" */
   UserProvidersProviderIdProviderUserIdKey = 'user_providers_provider_id_provider_user_id_key',
   /** unique or primary key constraint on columns "provider_id", "user_id" */
-  UserProvidersUserIdProviderIdKey = 'user_providers_user_id_provider_id_key'
+  UserProvidersUserIdProviderIdKey = 'user_providers_user_id_provider_id_key',
 }
 
 /** input type for inserting data into table "auth.user_providers" */
@@ -1153,18 +1143,17 @@ export type AuthUserProviders_Insert_Input = {
   userId?: InputMaybe<Scalars['uuid']>;
 };
 
-export type AuthUserProfile_Insert_Input = {
-
+export type User_Profiles_Insert_Input = {
   role?: InputMaybe<Scalars['String']>;
-  disabled?: InputMaybe<Scalars['Int']>;
-  emailVerified?: InputMaybe<Scalars['Int']>;
+  disabled?: InputMaybe<Scalars['Boolean']>;
+  email_verified?: InputMaybe<Scalars['Boolean']>;
   user_id?: InputMaybe<Scalars['uuid']>;
   auth_id?: InputMaybe<Scalars['uuid']>;
+  tenant_id?: InputMaybe<Scalars['uuid']>;
   function_id?: InputMaybe<Scalars['uuid']>;
   created_by?: InputMaybe<Scalars['uuid']>;
   updated_by?: InputMaybe<Scalars['uuid']>;
 };
-
 
 /** aggregate max on columns */
 export type AuthUserProviders_Max_Fields = {
@@ -1268,7 +1257,7 @@ export enum AuthUserProviders_Select_Column {
   /** column name */
   UpdatedAt = 'updatedAt',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 /** input type for updating data in table "auth.user_providers" */
@@ -1320,7 +1309,7 @@ export enum AuthUserProviders_Update_Column {
   /** column name */
   UpdatedAt = 'updatedAt',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 export type AuthUserProviders_Updates = {
@@ -1368,7 +1357,6 @@ export type AuthUserRoles_Aggregate_Fields = {
   min?: Maybe<AuthUserRoles_Min_Fields>;
 };
 
-
 /** aggregate fields of "auth.user_roles" */
 export type AuthUserRoles_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<AuthUserRoles_Select_Column>>;
@@ -1407,7 +1395,7 @@ export enum AuthUserRoles_Constraint {
   /** unique or primary key constraint on columns "id" */
   UserRolesPkey = 'user_roles_pkey',
   /** unique or primary key constraint on columns "user_id", "role" */
-  UserRolesUserIdRoleKey = 'user_roles_user_id_role_key'
+  UserRolesUserIdRoleKey = 'user_roles_user_id_role_key',
 }
 
 /** input type for inserting data into table "auth.user_roles" */
@@ -1494,7 +1482,7 @@ export enum AuthUserRoles_Select_Column {
   /** column name */
   Role = 'role',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 /** input type for updating data in table "auth.user_roles" */
@@ -1530,7 +1518,7 @@ export enum AuthUserRoles_Update_Column {
   /** column name */
   Role = 'role',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 export type AuthUserRoles_Updates = {
@@ -1586,7 +1574,6 @@ export type AuthUserSecurityKeys_Aggregate_Fields = {
   var_samp?: Maybe<AuthUserSecurityKeys_Var_Samp_Fields>;
   variance?: Maybe<AuthUserSecurityKeys_Variance_Fields>;
 };
-
 
 /** aggregate fields of "auth.user_security_keys" */
 export type AuthUserSecurityKeys_Aggregate_FieldsCountArgs = {
@@ -1647,7 +1634,7 @@ export enum AuthUserSecurityKeys_Constraint {
   /** unique or primary key constraint on columns "credential_id" */
   UserSecurityKeyCredentialIdKey = 'user_security_key_credential_id_key',
   /** unique or primary key constraint on columns "id" */
-  UserSecurityKeysPkey = 'user_security_keys_pkey'
+  UserSecurityKeysPkey = 'user_security_keys_pkey',
 }
 
 /** input type for incrementing numeric columns in table "auth.user_security_keys" */
@@ -1757,7 +1744,7 @@ export enum AuthUserSecurityKeys_Select_Column {
   /** column name */
   Transports = 'transports',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 /** input type for updating data in table "auth.user_security_keys" */
@@ -1849,7 +1836,7 @@ export enum AuthUserSecurityKeys_Update_Column {
   /** column name */
   Transports = 'transports',
   /** column name */
-  UserId = 'userId'
+  UserId = 'userId',
 }
 
 export type AuthUserSecurityKeys_Updates = {
@@ -1957,7 +1944,7 @@ export enum Cursor_Ordering {
   /** ascending ordering of the cursor */
   Asc = 'ASC',
   /** descending ordering of the cursor */
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 export type Jsonb_Cast_Exp = {
@@ -2100,133 +2087,128 @@ export type Mutation_Root = {
   /** update data of the table: "auth.users" */
   updateUsers?: Maybe<Users_Mutation_Response>;
   /** update multiples rows of table: "auth.provider_requests" */
-  update_authProviderRequests_many?: Maybe<Array<Maybe<AuthProviderRequests_Mutation_Response>>>;
+  update_authProviderRequests_many?: Maybe<
+    Array<Maybe<AuthProviderRequests_Mutation_Response>>
+  >;
   /** update multiples rows of table: "auth.providers" */
-  update_authProviders_many?: Maybe<Array<Maybe<AuthProviders_Mutation_Response>>>;
+  update_authProviders_many?: Maybe<
+    Array<Maybe<AuthProviders_Mutation_Response>>
+  >;
   /** update multiples rows of table: "auth.refresh_token_types" */
-  update_authRefreshTokenTypes_many?: Maybe<Array<Maybe<AuthRefreshTokenTypes_Mutation_Response>>>;
+  update_authRefreshTokenTypes_many?: Maybe<
+    Array<Maybe<AuthRefreshTokenTypes_Mutation_Response>>
+  >;
   /** update multiples rows of table: "auth.refresh_tokens" */
-  update_authRefreshTokens_many?: Maybe<Array<Maybe<AuthRefreshTokens_Mutation_Response>>>;
+  update_authRefreshTokens_many?: Maybe<
+    Array<Maybe<AuthRefreshTokens_Mutation_Response>>
+  >;
   /** update multiples rows of table: "auth.roles" */
   update_authRoles_many?: Maybe<Array<Maybe<AuthRoles_Mutation_Response>>>;
   /** update multiples rows of table: "auth.user_providers" */
-  update_authUserProviders_many?: Maybe<Array<Maybe<AuthUserProviders_Mutation_Response>>>;
+  update_authUserProviders_many?: Maybe<
+    Array<Maybe<AuthUserProviders_Mutation_Response>>
+  >;
   /** update multiples rows of table: "auth.user_roles" */
-  update_authUserRoles_many?: Maybe<Array<Maybe<AuthUserRoles_Mutation_Response>>>;
+  update_authUserRoles_many?: Maybe<
+    Array<Maybe<AuthUserRoles_Mutation_Response>>
+  >;
   /** update multiples rows of table: "auth.user_security_keys" */
-  update_authUserSecurityKeys_many?: Maybe<Array<Maybe<AuthUserSecurityKeys_Mutation_Response>>>;
+  update_authUserSecurityKeys_many?: Maybe<
+    Array<Maybe<AuthUserSecurityKeys_Mutation_Response>>
+  >;
   /** update multiples rows of table: "auth.users" */
   update_users_many?: Maybe<Array<Maybe<Users_Mutation_Response>>>;
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthProviderArgs = {
   id: Scalars['String'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthProviderRequestArgs = {
   id: Scalars['uuid'];
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthProviderRequestsArgs = {
   where: AuthProviderRequests_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthProvidersArgs = {
   where: AuthProviders_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthRefreshTokenArgs = {
   id: Scalars['uuid'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthRefreshTokenTypeArgs = {
   value: Scalars['String'];
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthRefreshTokenTypesArgs = {
   where: AuthRefreshTokenTypes_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthRefreshTokensArgs = {
   where: AuthRefreshTokens_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthRoleArgs = {
   role: Scalars['String'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthRolesArgs = {
   where: AuthRoles_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthUserProviderArgs = {
   id: Scalars['uuid'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthUserProvidersArgs = {
   where: AuthUserProviders_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthUserRoleArgs = {
   id: Scalars['uuid'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthUserRolesArgs = {
   where: AuthUserRoles_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteAuthUserSecurityKeyArgs = {
   id: Scalars['uuid'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteAuthUserSecurityKeysArgs = {
   where: AuthUserSecurityKeys_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootDeleteUserArgs = {
   id: Scalars['uuid'];
 };
 
-
 /** mutation root */
 export type Mutation_RootDeleteUsersArgs = {
   where: Users_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthProviderArgs = {
@@ -2234,13 +2216,11 @@ export type Mutation_RootInsertAuthProviderArgs = {
   on_conflict?: InputMaybe<AuthProviders_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthProviderRequestArgs = {
   object: AuthProviderRequests_Insert_Input;
   on_conflict?: InputMaybe<AuthProviderRequests_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthProviderRequestsArgs = {
@@ -2248,13 +2228,11 @@ export type Mutation_RootInsertAuthProviderRequestsArgs = {
   on_conflict?: InputMaybe<AuthProviderRequests_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthProvidersArgs = {
   objects: Array<AuthProviders_Insert_Input>;
   on_conflict?: InputMaybe<AuthProviders_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthRefreshTokenArgs = {
@@ -2262,13 +2240,11 @@ export type Mutation_RootInsertAuthRefreshTokenArgs = {
   on_conflict?: InputMaybe<AuthRefreshTokens_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthRefreshTokenTypeArgs = {
   object: AuthRefreshTokenTypes_Insert_Input;
   on_conflict?: InputMaybe<AuthRefreshTokenTypes_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthRefreshTokenTypesArgs = {
@@ -2276,13 +2252,11 @@ export type Mutation_RootInsertAuthRefreshTokenTypesArgs = {
   on_conflict?: InputMaybe<AuthRefreshTokenTypes_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthRefreshTokensArgs = {
   objects: Array<AuthRefreshTokens_Insert_Input>;
   on_conflict?: InputMaybe<AuthRefreshTokens_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthRoleArgs = {
@@ -2290,13 +2264,11 @@ export type Mutation_RootInsertAuthRoleArgs = {
   on_conflict?: InputMaybe<AuthRoles_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthRolesArgs = {
   objects: Array<AuthRoles_Insert_Input>;
   on_conflict?: InputMaybe<AuthRoles_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthUserProviderArgs = {
@@ -2304,13 +2276,11 @@ export type Mutation_RootInsertAuthUserProviderArgs = {
   on_conflict?: InputMaybe<AuthUserProviders_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthUserProvidersArgs = {
   objects: Array<AuthUserProviders_Insert_Input>;
   on_conflict?: InputMaybe<AuthUserProviders_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthUserRoleArgs = {
@@ -2318,13 +2288,11 @@ export type Mutation_RootInsertAuthUserRoleArgs = {
   on_conflict?: InputMaybe<AuthUserRoles_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthUserRolesArgs = {
   objects: Array<AuthUserRoles_Insert_Input>;
   on_conflict?: InputMaybe<AuthUserRoles_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertAuthUserSecurityKeyArgs = {
@@ -2332,13 +2300,11 @@ export type Mutation_RootInsertAuthUserSecurityKeyArgs = {
   on_conflict?: InputMaybe<AuthUserSecurityKeys_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertAuthUserSecurityKeysArgs = {
   objects: Array<AuthUserSecurityKeys_Insert_Input>;
   on_conflict?: InputMaybe<AuthUserSecurityKeys_On_Conflict>;
 };
-
 
 /** mutation root */
 export type Mutation_RootInsertUserArgs = {
@@ -2346,20 +2312,17 @@ export type Mutation_RootInsertUserArgs = {
   on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootInsertUsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthProviderArgs = {
   _set?: InputMaybe<AuthProviders_Set_Input>;
   pk_columns: AuthProviders_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdateAuthProviderRequestArgs = {
@@ -2372,7 +2335,6 @@ export type Mutation_RootUpdateAuthProviderRequestArgs = {
   pk_columns: AuthProviderRequests_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthProviderRequestsArgs = {
   _append?: InputMaybe<AuthProviderRequests_Append_Input>;
@@ -2384,13 +2346,11 @@ export type Mutation_RootUpdateAuthProviderRequestsArgs = {
   where: AuthProviderRequests_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthProvidersArgs = {
   _set?: InputMaybe<AuthProviders_Set_Input>;
   where: AuthProviders_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdateAuthRefreshTokenArgs = {
@@ -2403,20 +2363,17 @@ export type Mutation_RootUpdateAuthRefreshTokenArgs = {
   pk_columns: AuthRefreshTokens_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthRefreshTokenTypeArgs = {
   _set?: InputMaybe<AuthRefreshTokenTypes_Set_Input>;
   pk_columns: AuthRefreshTokenTypes_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthRefreshTokenTypesArgs = {
   _set?: InputMaybe<AuthRefreshTokenTypes_Set_Input>;
   where: AuthRefreshTokenTypes_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdateAuthRefreshTokensArgs = {
@@ -2429,13 +2386,11 @@ export type Mutation_RootUpdateAuthRefreshTokensArgs = {
   where: AuthRefreshTokens_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthRoleArgs = {
   _set?: InputMaybe<AuthRoles_Set_Input>;
   pk_columns: AuthRoles_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdateAuthRolesArgs = {
@@ -2443,13 +2398,11 @@ export type Mutation_RootUpdateAuthRolesArgs = {
   where: AuthRoles_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthUserProviderArgs = {
   _set?: InputMaybe<AuthUserProviders_Set_Input>;
   pk_columns: AuthUserProviders_Pk_Columns_Input;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdateAuthUserProvidersArgs = {
@@ -2457,20 +2410,17 @@ export type Mutation_RootUpdateAuthUserProvidersArgs = {
   where: AuthUserProviders_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthUserRoleArgs = {
   _set?: InputMaybe<AuthUserRoles_Set_Input>;
   pk_columns: AuthUserRoles_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthUserRolesArgs = {
   _set?: InputMaybe<AuthUserRoles_Set_Input>;
   where: AuthUserRoles_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdateAuthUserSecurityKeyArgs = {
@@ -2479,14 +2429,12 @@ export type Mutation_RootUpdateAuthUserSecurityKeyArgs = {
   pk_columns: AuthUserSecurityKeys_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateAuthUserSecurityKeysArgs = {
   _inc?: InputMaybe<AuthUserSecurityKeys_Inc_Input>;
   _set?: InputMaybe<AuthUserSecurityKeys_Set_Input>;
   where: AuthUserSecurityKeys_Bool_Exp;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdateUserArgs = {
@@ -2499,7 +2447,6 @@ export type Mutation_RootUpdateUserArgs = {
   pk_columns: Users_Pk_Columns_Input;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdateUsersArgs = {
   _append?: InputMaybe<Users_Append_Input>;
@@ -2511,54 +2458,45 @@ export type Mutation_RootUpdateUsersArgs = {
   where: Users_Bool_Exp;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_AuthProviderRequests_ManyArgs = {
   updates: Array<AuthProviderRequests_Updates>;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_AuthProviders_ManyArgs = {
   updates: Array<AuthProviders_Updates>;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_AuthRefreshTokenTypes_ManyArgs = {
   updates: Array<AuthRefreshTokenTypes_Updates>;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_AuthRefreshTokens_ManyArgs = {
   updates: Array<AuthRefreshTokens_Updates>;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_AuthRoles_ManyArgs = {
   updates: Array<AuthRoles_Updates>;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_AuthUserProviders_ManyArgs = {
   updates: Array<AuthUserProviders_Updates>;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_AuthUserRoles_ManyArgs = {
   updates: Array<AuthUserRoles_Updates>;
 };
 
-
 /** mutation root */
 export type Mutation_RootUpdate_AuthUserSecurityKeys_ManyArgs = {
   updates: Array<AuthUserSecurityKeys_Updates>;
 };
-
 
 /** mutation root */
 export type Mutation_RootUpdate_Users_ManyArgs = {
@@ -2578,7 +2516,7 @@ export enum Order_By {
   /** in descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
   /** in descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
+  DescNullsLast = 'desc_nulls_last',
 }
 
 export type Query_Root = {
@@ -2639,16 +2577,13 @@ export type Query_Root = {
   usersAggregate: Users_Aggregate;
 };
 
-
 export type Query_RootAuthProviderArgs = {
   id: Scalars['String'];
 };
 
-
 export type Query_RootAuthProviderRequestArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Query_RootAuthProviderRequestsArgs = {
   distinct_on?: InputMaybe<Array<AuthProviderRequests_Select_Column>>;
@@ -2658,7 +2593,6 @@ export type Query_RootAuthProviderRequestsArgs = {
   where?: InputMaybe<AuthProviderRequests_Bool_Exp>;
 };
 
-
 export type Query_RootAuthProviderRequestsAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthProviderRequests_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2666,7 +2600,6 @@ export type Query_RootAuthProviderRequestsAggregateArgs = {
   order_by?: InputMaybe<Array<AuthProviderRequests_Order_By>>;
   where?: InputMaybe<AuthProviderRequests_Bool_Exp>;
 };
-
 
 export type Query_RootAuthProvidersArgs = {
   distinct_on?: InputMaybe<Array<AuthProviders_Select_Column>>;
@@ -2676,7 +2609,6 @@ export type Query_RootAuthProvidersArgs = {
   where?: InputMaybe<AuthProviders_Bool_Exp>;
 };
 
-
 export type Query_RootAuthProvidersAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthProviders_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2685,16 +2617,13 @@ export type Query_RootAuthProvidersAggregateArgs = {
   where?: InputMaybe<AuthProviders_Bool_Exp>;
 };
 
-
 export type Query_RootAuthRefreshTokenArgs = {
   id: Scalars['uuid'];
 };
 
-
 export type Query_RootAuthRefreshTokenTypeArgs = {
   value: Scalars['String'];
 };
-
 
 export type Query_RootAuthRefreshTokenTypesArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokenTypes_Select_Column>>;
@@ -2704,7 +2633,6 @@ export type Query_RootAuthRefreshTokenTypesArgs = {
   where?: InputMaybe<AuthRefreshTokenTypes_Bool_Exp>;
 };
 
-
 export type Query_RootAuthRefreshTokenTypesAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokenTypes_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2712,7 +2640,6 @@ export type Query_RootAuthRefreshTokenTypesAggregateArgs = {
   order_by?: InputMaybe<Array<AuthRefreshTokenTypes_Order_By>>;
   where?: InputMaybe<AuthRefreshTokenTypes_Bool_Exp>;
 };
-
 
 export type Query_RootAuthRefreshTokensArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokens_Select_Column>>;
@@ -2722,7 +2649,6 @@ export type Query_RootAuthRefreshTokensArgs = {
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
 
-
 export type Query_RootAuthRefreshTokensAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokens_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2731,11 +2657,9 @@ export type Query_RootAuthRefreshTokensAggregateArgs = {
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
 
-
 export type Query_RootAuthRoleArgs = {
   role: Scalars['String'];
 };
-
 
 export type Query_RootAuthRolesArgs = {
   distinct_on?: InputMaybe<Array<AuthRoles_Select_Column>>;
@@ -2745,7 +2669,6 @@ export type Query_RootAuthRolesArgs = {
   where?: InputMaybe<AuthRoles_Bool_Exp>;
 };
 
-
 export type Query_RootAuthRolesAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthRoles_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2754,11 +2677,9 @@ export type Query_RootAuthRolesAggregateArgs = {
   where?: InputMaybe<AuthRoles_Bool_Exp>;
 };
 
-
 export type Query_RootAuthUserProviderArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Query_RootAuthUserProvidersArgs = {
   distinct_on?: InputMaybe<Array<AuthUserProviders_Select_Column>>;
@@ -2768,7 +2689,6 @@ export type Query_RootAuthUserProvidersArgs = {
   where?: InputMaybe<AuthUserProviders_Bool_Exp>;
 };
 
-
 export type Query_RootAuthUserProvidersAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserProviders_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2777,11 +2697,9 @@ export type Query_RootAuthUserProvidersAggregateArgs = {
   where?: InputMaybe<AuthUserProviders_Bool_Exp>;
 };
 
-
 export type Query_RootAuthUserRoleArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Query_RootAuthUserRolesArgs = {
   distinct_on?: InputMaybe<Array<AuthUserRoles_Select_Column>>;
@@ -2791,7 +2709,6 @@ export type Query_RootAuthUserRolesArgs = {
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
 
-
 export type Query_RootAuthUserRolesAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserRoles_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2800,11 +2717,9 @@ export type Query_RootAuthUserRolesAggregateArgs = {
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
 
-
 export type Query_RootAuthUserSecurityKeyArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Query_RootAuthUserSecurityKeysArgs = {
   distinct_on?: InputMaybe<Array<AuthUserSecurityKeys_Select_Column>>;
@@ -2814,7 +2729,6 @@ export type Query_RootAuthUserSecurityKeysArgs = {
   where?: InputMaybe<AuthUserSecurityKeys_Bool_Exp>;
 };
 
-
 export type Query_RootAuthUserSecurityKeysAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserSecurityKeys_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2823,11 +2737,9 @@ export type Query_RootAuthUserSecurityKeysAggregateArgs = {
   where?: InputMaybe<AuthUserSecurityKeys_Bool_Exp>;
 };
 
-
 export type Query_RootUserArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Query_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
@@ -2836,7 +2748,6 @@ export type Query_RootUsersArgs = {
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
-
 
 export type Query_RootUsersAggregateArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
@@ -2922,16 +2833,13 @@ export type Subscription_Root = {
   users_stream: Array<Users>;
 };
 
-
 export type Subscription_RootAuthProviderArgs = {
   id: Scalars['String'];
 };
 
-
 export type Subscription_RootAuthProviderRequestArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Subscription_RootAuthProviderRequestsArgs = {
   distinct_on?: InputMaybe<Array<AuthProviderRequests_Select_Column>>;
@@ -2941,7 +2849,6 @@ export type Subscription_RootAuthProviderRequestsArgs = {
   where?: InputMaybe<AuthProviderRequests_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthProviderRequestsAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthProviderRequests_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2950,13 +2857,11 @@ export type Subscription_RootAuthProviderRequestsAggregateArgs = {
   where?: InputMaybe<AuthProviderRequests_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthProviderRequests_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthProviderRequests_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthProviderRequests_Bool_Exp>;
 };
-
 
 export type Subscription_RootAuthProvidersArgs = {
   distinct_on?: InputMaybe<Array<AuthProviders_Select_Column>>;
@@ -2966,7 +2871,6 @@ export type Subscription_RootAuthProvidersArgs = {
   where?: InputMaybe<AuthProviders_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthProvidersAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthProviders_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -2975,23 +2879,19 @@ export type Subscription_RootAuthProvidersAggregateArgs = {
   where?: InputMaybe<AuthProviders_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthProviders_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthProviders_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthProviders_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRefreshTokenArgs = {
   id: Scalars['uuid'];
 };
 
-
 export type Subscription_RootAuthRefreshTokenTypeArgs = {
   value: Scalars['String'];
 };
-
 
 export type Subscription_RootAuthRefreshTokenTypesArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokenTypes_Select_Column>>;
@@ -3001,7 +2901,6 @@ export type Subscription_RootAuthRefreshTokenTypesArgs = {
   where?: InputMaybe<AuthRefreshTokenTypes_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRefreshTokenTypesAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokenTypes_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3010,13 +2909,11 @@ export type Subscription_RootAuthRefreshTokenTypesAggregateArgs = {
   where?: InputMaybe<AuthRefreshTokenTypes_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRefreshTokenTypes_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthRefreshTokenTypes_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthRefreshTokenTypes_Bool_Exp>;
 };
-
 
 export type Subscription_RootAuthRefreshTokensArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokens_Select_Column>>;
@@ -3026,7 +2923,6 @@ export type Subscription_RootAuthRefreshTokensArgs = {
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRefreshTokensAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokens_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3035,18 +2931,15 @@ export type Subscription_RootAuthRefreshTokensAggregateArgs = {
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRefreshTokens_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthRefreshTokens_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRoleArgs = {
   role: Scalars['String'];
 };
-
 
 export type Subscription_RootAuthRolesArgs = {
   distinct_on?: InputMaybe<Array<AuthRoles_Select_Column>>;
@@ -3056,7 +2949,6 @@ export type Subscription_RootAuthRolesArgs = {
   where?: InputMaybe<AuthRoles_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRolesAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthRoles_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3065,18 +2957,15 @@ export type Subscription_RootAuthRolesAggregateArgs = {
   where?: InputMaybe<AuthRoles_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthRoles_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthRoles_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthRoles_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserProviderArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Subscription_RootAuthUserProvidersArgs = {
   distinct_on?: InputMaybe<Array<AuthUserProviders_Select_Column>>;
@@ -3086,7 +2975,6 @@ export type Subscription_RootAuthUserProvidersArgs = {
   where?: InputMaybe<AuthUserProviders_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserProvidersAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserProviders_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3095,18 +2983,15 @@ export type Subscription_RootAuthUserProvidersAggregateArgs = {
   where?: InputMaybe<AuthUserProviders_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserProviders_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthUserProviders_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthUserProviders_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserRoleArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Subscription_RootAuthUserRolesArgs = {
   distinct_on?: InputMaybe<Array<AuthUserRoles_Select_Column>>;
@@ -3116,7 +3001,6 @@ export type Subscription_RootAuthUserRolesArgs = {
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserRolesAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserRoles_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3125,18 +3009,15 @@ export type Subscription_RootAuthUserRolesAggregateArgs = {
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserRoles_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthUserRoles_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserSecurityKeyArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Subscription_RootAuthUserSecurityKeysArgs = {
   distinct_on?: InputMaybe<Array<AuthUserSecurityKeys_Select_Column>>;
@@ -3146,7 +3027,6 @@ export type Subscription_RootAuthUserSecurityKeysArgs = {
   where?: InputMaybe<AuthUserSecurityKeys_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserSecurityKeysAggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserSecurityKeys_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3155,18 +3035,15 @@ export type Subscription_RootAuthUserSecurityKeysAggregateArgs = {
   where?: InputMaybe<AuthUserSecurityKeys_Bool_Exp>;
 };
 
-
 export type Subscription_RootAuthUserSecurityKeys_StreamArgs = {
   batch_size: Scalars['Int'];
   cursor: Array<InputMaybe<AuthUserSecurityKeys_Stream_Cursor_Input>>;
   where?: InputMaybe<AuthUserSecurityKeys_Bool_Exp>;
 };
 
-
 export type Subscription_RootUserArgs = {
   id: Scalars['uuid'];
 };
-
 
 export type Subscription_RootUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
@@ -3176,7 +3053,6 @@ export type Subscription_RootUsersArgs = {
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
-
 export type Subscription_RootUsersAggregateArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -3184,7 +3060,6 @@ export type Subscription_RootUsersAggregateArgs = {
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
-
 
 export type Subscription_RootUsers_StreamArgs = {
   batch_size: Scalars['Int'];
@@ -3253,12 +3128,10 @@ export type Users = {
   userProviders_aggregate: AuthUserProviders_Aggregate;
 };
 
-
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersMetadataArgs = {
   path?: InputMaybe<Scalars['String']>;
 };
-
 
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersRefreshTokensArgs = {
@@ -3269,7 +3142,6 @@ export type UsersRefreshTokensArgs = {
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
 
-
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersRefreshTokens_AggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthRefreshTokens_Select_Column>>;
@@ -3278,7 +3150,6 @@ export type UsersRefreshTokens_AggregateArgs = {
   order_by?: InputMaybe<Array<AuthRefreshTokens_Order_By>>;
   where?: InputMaybe<AuthRefreshTokens_Bool_Exp>;
 };
-
 
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersRolesArgs = {
@@ -3289,7 +3160,6 @@ export type UsersRolesArgs = {
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
 
-
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersRoles_AggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserRoles_Select_Column>>;
@@ -3298,7 +3168,6 @@ export type UsersRoles_AggregateArgs = {
   order_by?: InputMaybe<Array<AuthUserRoles_Order_By>>;
   where?: InputMaybe<AuthUserRoles_Bool_Exp>;
 };
-
 
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersSecurityKeysArgs = {
@@ -3309,7 +3178,6 @@ export type UsersSecurityKeysArgs = {
   where?: InputMaybe<AuthUserSecurityKeys_Bool_Exp>;
 };
 
-
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersSecurityKeys_AggregateArgs = {
   distinct_on?: InputMaybe<Array<AuthUserSecurityKeys_Select_Column>>;
@@ -3319,7 +3187,6 @@ export type UsersSecurityKeys_AggregateArgs = {
   where?: InputMaybe<AuthUserSecurityKeys_Bool_Exp>;
 };
 
-
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersUserProvidersArgs = {
   distinct_on?: InputMaybe<Array<AuthUserProviders_Select_Column>>;
@@ -3328,7 +3195,6 @@ export type UsersUserProvidersArgs = {
   order_by?: InputMaybe<Array<AuthUserProviders_Order_By>>;
   where?: InputMaybe<AuthUserProviders_Bool_Exp>;
 };
-
 
 /** User account information. Don't modify its structure as Hasura Auth relies on it to function properly. */
 export type UsersUserProviders_AggregateArgs = {
@@ -3380,7 +3246,6 @@ export type Users_Aggregate_Fields = {
   max?: Maybe<Users_Max_Fields>;
   min?: Maybe<Users_Min_Fields>;
 };
-
 
 /** aggregate fields of "auth.users" */
 export type Users_Aggregate_FieldsCountArgs = {
@@ -3455,7 +3320,7 @@ export enum Users_Constraint {
   /** unique or primary key constraint on columns "phone_number" */
   UsersPhoneNumberKey = 'users_phone_number_key',
   /** unique or primary key constraint on columns "id" */
-  UsersPkey = 'users_pkey'
+  UsersPkey = 'users_pkey',
 }
 
 /** delete the field or element with specified path (for JSON arrays, negative integers count from the end) */
@@ -3505,7 +3370,6 @@ export type Users_Insert_Input = {
   totpSecret?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['timestamptz']>;
   userProviders?: InputMaybe<AuthUserProviders_Arr_Rel_Insert_Input>;
-  profile?: InputMaybe<AuthUserProfile_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -3724,7 +3588,7 @@ export enum Users_Select_Column {
   /** column name */
   TotpSecret = 'totpSecret',
   /** column name */
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 /** select "users_aggregate_bool_exp_bool_and_arguments_columns" columns of table "auth.users" */
@@ -3736,7 +3600,7 @@ export enum Users_Select_Column_Users_Aggregate_Bool_Exp_Bool_And_Arguments_Colu
   /** column name */
   IsAnonymous = 'isAnonymous',
   /** column name */
-  PhoneNumberVerified = 'phoneNumberVerified'
+  PhoneNumberVerified = 'phoneNumberVerified',
 }
 
 /** select "users_aggregate_bool_exp_bool_or_arguments_columns" columns of table "auth.users" */
@@ -3748,7 +3612,7 @@ export enum Users_Select_Column_Users_Aggregate_Bool_Exp_Bool_Or_Arguments_Colum
   /** column name */
   IsAnonymous = 'isAnonymous',
   /** column name */
-  PhoneNumberVerified = 'phoneNumberVerified'
+  PhoneNumberVerified = 'phoneNumberVerified',
 }
 
 /** input type for updating data in table "auth.users" */
@@ -3868,7 +3732,7 @@ export enum Users_Update_Column {
   /** column name */
   TotpSecret = 'totpSecret',
   /** column name */
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
 }
 
 export type Users_Updates = {
@@ -3904,184 +3768,463 @@ export type InsertProviderRequestMutationVariables = Exact<{
   providerRequest: AuthProviderRequests_Insert_Input;
 }>;
 
-
-export type InsertProviderRequestMutation = { __typename?: 'mutation_root', insertAuthProviderRequest?: { __typename?: 'authProviderRequests', id: any, options?: any | null } | null };
+export type InsertProviderRequestMutation = {
+  __typename?: 'mutation_root';
+  insertAuthProviderRequest?: {
+    __typename?: 'authProviderRequests';
+    id: any;
+    options?: any | null;
+  } | null;
+};
 
 export type DeleteProviderRequestMutationVariables = Exact<{
   id: Scalars['uuid'];
 }>;
 
-
-export type DeleteProviderRequestMutation = { __typename?: 'mutation_root', deleteAuthProviderRequest?: { __typename?: 'authProviderRequests', id: any, options?: any | null } | null };
+export type DeleteProviderRequestMutation = {
+  __typename?: 'mutation_root';
+  deleteAuthProviderRequest?: {
+    __typename?: 'authProviderRequests';
+    id: any;
+    options?: any | null;
+  } | null;
+};
 
 export type ProviderRequestQueryVariables = Exact<{
   id: Scalars['uuid'];
 }>;
 
-
-export type ProviderRequestQuery = { __typename?: 'query_root', authProviderRequest?: { __typename?: 'authProviderRequests', id: any, options?: any | null } | null };
+export type ProviderRequestQuery = {
+  __typename?: 'query_root';
+  authProviderRequest?: {
+    __typename?: 'authProviderRequests';
+    id: any;
+    options?: any | null;
+  } | null;
+};
 
 export type InsertRefreshTokenMutationVariables = Exact<{
   refreshToken: AuthRefreshTokens_Insert_Input;
 }>;
 
-
-export type InsertRefreshTokenMutation = { __typename?: 'mutation_root', insertAuthRefreshToken?: { __typename?: 'authRefreshTokens', id: any } | null };
+export type InsertRefreshTokenMutation = {
+  __typename?: 'mutation_root';
+  insertAuthRefreshToken?: { __typename?: 'authRefreshTokens'; id: any } | null;
+};
 
 export type DeleteRefreshTokenMutationVariables = Exact<{
   refreshTokenHash: Scalars['String'];
 }>;
 
-
-export type DeleteRefreshTokenMutation = { __typename?: 'mutation_root', deleteAuthRefreshTokens?: { __typename?: 'authRefreshTokens_mutation_response', affected_rows: number } | null };
+export type DeleteRefreshTokenMutation = {
+  __typename?: 'mutation_root';
+  deleteAuthRefreshTokens?: {
+    __typename?: 'authRefreshTokens_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type DeleteUserRefreshTokensMutationVariables = Exact<{
   userId: Scalars['uuid'];
 }>;
 
+export type DeleteUserRefreshTokensMutation = {
+  __typename?: 'mutation_root';
+  deleteAuthRefreshTokens?: {
+    __typename?: 'authRefreshTokens_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
-export type DeleteUserRefreshTokensMutation = { __typename?: 'mutation_root', deleteAuthRefreshTokens?: { __typename?: 'authRefreshTokens_mutation_response', affected_rows: number } | null };
+export type DeleteExpiredRefreshTokensMutationVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type DeleteExpiredRefreshTokensMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DeleteExpiredRefreshTokensMutation = { __typename?: 'mutation_root', deleteAuthRefreshTokens?: { __typename?: 'authRefreshTokens_mutation_response', affected_rows: number } | null };
+export type DeleteExpiredRefreshTokensMutation = {
+  __typename?: 'mutation_root';
+  deleteAuthRefreshTokens?: {
+    __typename?: 'authRefreshTokens_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type UpsertRolesMutationVariables = Exact<{
   roles: Array<AuthRoles_Insert_Input> | AuthRoles_Insert_Input;
 }>;
 
-
-export type UpsertRolesMutation = { __typename?: 'mutation_root', insertAuthRoles?: { __typename?: 'authRoles_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'authRoles', role: string }> } | null };
+export type UpsertRolesMutation = {
+  __typename?: 'mutation_root';
+  insertAuthRoles?: {
+    __typename?: 'authRoles_mutation_response';
+    affected_rows: number;
+    returning: Array<{ __typename?: 'authRoles'; role: string }>;
+  } | null;
+};
 
 export type GetUserSecurityKeysQueryVariables = Exact<{
   id: Scalars['uuid'];
 }>;
 
-
-export type GetUserSecurityKeysQuery = { __typename?: 'query_root', authUserSecurityKeys: Array<{ __typename?: 'authUserSecurityKeys', counter: any, credentialId: string, credentialPublicKey?: any | null, transports: string, id: any, user: { __typename?: 'users', id: any } }> };
+export type GetUserSecurityKeysQuery = {
+  __typename?: 'query_root';
+  authUserSecurityKeys: Array<{
+    __typename?: 'authUserSecurityKeys';
+    counter: any;
+    credentialId: string;
+    credentialPublicKey?: any | null;
+    transports: string;
+    id: any;
+    user: { __typename?: 'users'; id: any };
+  }>;
+};
 
 export type GetUserChallengeQueryVariables = Exact<{
   id: Scalars['uuid'];
 }>;
 
-
-export type GetUserChallengeQuery = { __typename?: 'query_root', user?: { __typename?: 'users', id: any, currentChallenge?: string | null } | null };
+export type GetUserChallengeQuery = {
+  __typename?: 'query_root';
+  user?: {
+    __typename?: 'users';
+    id: any;
+    currentChallenge?: string | null;
+  } | null;
+};
 
 export type UpdateUserChallengeMutationVariables = Exact<{
   userId: Scalars['uuid'];
   challenge: Scalars['String'];
 }>;
 
-
-export type UpdateUserChallengeMutation = { __typename?: 'mutation_root', updateUser?: { __typename?: 'users', id: any } | null };
+export type UpdateUserChallengeMutation = {
+  __typename?: 'mutation_root';
+  updateUser?: { __typename?: 'users'; id: any } | null;
+};
 
 export type AddUserSecurityKeyMutationVariables = Exact<{
   userSecurityKey: AuthUserSecurityKeys_Insert_Input;
 }>;
 
-
-export type AddUserSecurityKeyMutation = { __typename?: 'mutation_root', insertAuthUserSecurityKey?: { __typename?: 'authUserSecurityKeys', id: any } | null };
+export type AddUserSecurityKeyMutation = {
+  __typename?: 'mutation_root';
+  insertAuthUserSecurityKey?: {
+    __typename?: 'authUserSecurityKeys';
+    id: any;
+  } | null;
+};
 
 export type UpdateUserSecurityKeyMutationVariables = Exact<{
   id: Scalars['uuid'];
   counter: Scalars['bigint'];
 }>;
 
-
-export type UpdateUserSecurityKeyMutation = { __typename?: 'mutation_root', updateAuthUserSecurityKey?: { __typename?: 'authUserSecurityKeys', id: any } | null };
+export type UpdateUserSecurityKeyMutation = {
+  __typename?: 'mutation_root';
+  updateAuthUserSecurityKey?: {
+    __typename?: 'authUserSecurityKeys';
+    id: any;
+  } | null;
+};
 
 export type AuthUserProvidersQueryVariables = Exact<{
   provider: Scalars['String'];
   providerUserId: Scalars['String'];
 }>;
 
-
-export type AuthUserProvidersQuery = { __typename?: 'query_root', authUserProviders: Array<{ __typename?: 'authUserProviders', id: any, user: { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> } }> };
+export type AuthUserProvidersQuery = {
+  __typename?: 'query_root';
+  authUserProviders: Array<{
+    __typename?: 'authUserProviders';
+    id: any;
+    user: {
+      __typename?: 'users';
+      id: any;
+      createdAt: any;
+      disabled: boolean;
+      displayName: string;
+      avatarUrl: string;
+      email?: any | null;
+      passwordHash?: string | null;
+      emailVerified: boolean;
+      phoneNumber?: string | null;
+      phoneNumberVerified: boolean;
+      defaultRole: string;
+      isAnonymous: boolean;
+      ticket?: string | null;
+      otpHash?: string | null;
+      totpSecret?: string | null;
+      activeMfaType?: string | null;
+      newEmail?: any | null;
+      locale: string;
+      metadata?: any | null;
+      roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+    };
+  }>;
+};
 
 export type UserProviderQueryVariables = Exact<{
   userId: Scalars['uuid'];
   providerId: Scalars['String'];
 }>;
 
-
-export type UserProviderQuery = { __typename?: 'query_root', authUserProviders: Array<{ __typename?: 'authUserProviders', id: any, refreshToken?: string | null }> };
+export type UserProviderQuery = {
+  __typename?: 'query_root';
+  authUserProviders: Array<{
+    __typename?: 'authUserProviders';
+    id: any;
+    refreshToken?: string | null;
+  }>;
+};
 
 export type UpdateAuthUserproviderMutationVariables = Exact<{
   id: Scalars['uuid'];
   authUserProvider: AuthUserProviders_Set_Input;
 }>;
 
-
-export type UpdateAuthUserproviderMutation = { __typename?: 'mutation_root', updateAuthUserProvider?: { __typename?: 'authUserProviders', id: any } | null };
+export type UpdateAuthUserproviderMutation = {
+  __typename?: 'mutation_root';
+  updateAuthUserProvider?: { __typename?: 'authUserProviders'; id: any } | null;
+};
 
 export type InsertUserRolesMutationVariables = Exact<{
   userRoles: Array<AuthUserRoles_Insert_Input> | AuthUserRoles_Insert_Input;
 }>;
 
-
-export type InsertUserRolesMutation = { __typename?: 'mutation_root', insertAuthUserRoles?: { __typename?: 'authUserRoles_mutation_response', affected_rows: number } | null };
+export type InsertUserRolesMutation = {
+  __typename?: 'mutation_root';
+  insertAuthUserRoles?: {
+    __typename?: 'authUserRoles_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type DeleteUserRolesByUserIdMutationVariables = Exact<{
   userId: Scalars['uuid'];
 }>;
 
+export type DeleteUserRolesByUserIdMutation = {
+  __typename?: 'mutation_root';
+  deleteAuthUserRoles?: {
+    __typename?: 'authUserRoles_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
-export type DeleteUserRolesByUserIdMutation = { __typename?: 'mutation_root', deleteAuthUserRoles?: { __typename?: 'authUserRoles_mutation_response', affected_rows: number } | null };
-
-export type UserFieldsFragment = { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> };
+export type UserFieldsFragment = {
+  __typename?: 'users';
+  id: any;
+  createdAt: any;
+  disabled: boolean;
+  displayName: string;
+  avatarUrl: string;
+  email?: any | null;
+  passwordHash?: string | null;
+  emailVerified: boolean;
+  phoneNumber?: string | null;
+  phoneNumberVerified: boolean;
+  defaultRole: string;
+  isAnonymous: boolean;
+  ticket?: string | null;
+  otpHash?: string | null;
+  totpSecret?: string | null;
+  activeMfaType?: string | null;
+  newEmail?: any | null;
+  locale: string;
+  metadata?: any | null;
+  roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+};
 
 export type UserQueryVariables = Exact<{
   id: Scalars['uuid'];
 }>;
 
-
-export type UserQuery = { __typename?: 'query_root', user?: { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> } | null };
+export type UserQuery = {
+  __typename?: 'query_root';
+  user?: {
+    __typename?: 'users';
+    id: any;
+    createdAt: any;
+    disabled: boolean;
+    displayName: string;
+    avatarUrl: string;
+    email?: any | null;
+    passwordHash?: string | null;
+    emailVerified: boolean;
+    phoneNumber?: string | null;
+    phoneNumberVerified: boolean;
+    defaultRole: string;
+    isAnonymous: boolean;
+    ticket?: string | null;
+    otpHash?: string | null;
+    totpSecret?: string | null;
+    activeMfaType?: string | null;
+    newEmail?: any | null;
+    locale: string;
+    metadata?: any | null;
+    roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+  } | null;
+};
 
 export type UsersQueryVariables = Exact<{
   where: Users_Bool_Exp;
 }>;
 
+export type UsersQuery = {
+  __typename?: 'query_root';
+  users: Array<{
+    __typename?: 'users';
+    id: any;
+    createdAt: any;
+    disabled: boolean;
+    displayName: string;
+    avatarUrl: string;
+    email?: any | null;
+    passwordHash?: string | null;
+    emailVerified: boolean;
+    phoneNumber?: string | null;
+    phoneNumberVerified: boolean;
+    defaultRole: string;
+    isAnonymous: boolean;
+    ticket?: string | null;
+    otpHash?: string | null;
+    totpSecret?: string | null;
+    activeMfaType?: string | null;
+    newEmail?: any | null;
+    locale: string;
+    metadata?: any | null;
+    roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+  }>;
+};
 
-export type UsersQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> }> };
+export type GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutationVariables =
+  Exact<{
+    refreshTokenHash: Scalars['String'];
+    expiresAt: Scalars['timestamptz'];
+  }>;
 
-export type GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutationVariables = Exact<{
-  refreshTokenHash: Scalars['String'];
-  expiresAt: Scalars['timestamptz'];
-}>;
-
-
-export type GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutation = { __typename?: 'mutation_root', updateAuthRefreshTokens?: { __typename?: 'authRefreshTokens_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'authRefreshTokens', id: any }> } | null };
+export type GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutation = {
+  __typename?: 'mutation_root';
+  updateAuthRefreshTokens?: {
+    __typename?: 'authRefreshTokens_mutation_response';
+    affected_rows: number;
+    returning: Array<{ __typename?: 'authRefreshTokens'; id: any }>;
+  } | null;
+};
 
 export type GetUsersByRefreshTokenQueryVariables = Exact<{
   refreshTokenHash: Scalars['String'];
 }>;
 
-
-export type GetUsersByRefreshTokenQuery = { __typename?: 'query_root', authRefreshTokens: Array<{ __typename?: 'authRefreshTokens', id: any, user: { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> } }> };
+export type GetUsersByRefreshTokenQuery = {
+  __typename?: 'query_root';
+  authRefreshTokens: Array<{
+    __typename?: 'authRefreshTokens';
+    id: any;
+    user: {
+      __typename?: 'users';
+      id: any;
+      createdAt: any;
+      disabled: boolean;
+      displayName: string;
+      avatarUrl: string;
+      email?: any | null;
+      passwordHash?: string | null;
+      emailVerified: boolean;
+      phoneNumber?: string | null;
+      phoneNumberVerified: boolean;
+      defaultRole: string;
+      isAnonymous: boolean;
+      ticket?: string | null;
+      otpHash?: string | null;
+      totpSecret?: string | null;
+      activeMfaType?: string | null;
+      newEmail?: any | null;
+      locale: string;
+      metadata?: any | null;
+      roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+    };
+  }>;
+};
 
 export type GetUsersByPatQueryVariables = Exact<{
   patHash: Scalars['String'];
 }>;
 
-
-export type GetUsersByPatQuery = { __typename?: 'query_root', authRefreshTokens: Array<{ __typename?: 'authRefreshTokens', id: any, user: { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> } }> };
+export type GetUsersByPatQuery = {
+  __typename?: 'query_root';
+  authRefreshTokens: Array<{
+    __typename?: 'authRefreshTokens';
+    id: any;
+    user: {
+      __typename?: 'users';
+      id: any;
+      createdAt: any;
+      disabled: boolean;
+      displayName: string;
+      avatarUrl: string;
+      email?: any | null;
+      passwordHash?: string | null;
+      emailVerified: boolean;
+      phoneNumber?: string | null;
+      phoneNumberVerified: boolean;
+      defaultRole: string;
+      isAnonymous: boolean;
+      ticket?: string | null;
+      otpHash?: string | null;
+      totpSecret?: string | null;
+      activeMfaType?: string | null;
+      newEmail?: any | null;
+      locale: string;
+      metadata?: any | null;
+      roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+    };
+  }>;
+};
 
 export type UpdateUserMutationVariables = Exact<{
   id: Scalars['uuid'];
   user: Users_Set_Input;
 }>;
 
-
-export type UpdateUserMutation = { __typename?: 'mutation_root', updateUser?: { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> } | null };
+export type UpdateUserMutation = {
+  __typename?: 'mutation_root';
+  updateUser?: {
+    __typename?: 'users';
+    id: any;
+    createdAt: any;
+    disabled: boolean;
+    displayName: string;
+    avatarUrl: string;
+    email?: any | null;
+    passwordHash?: string | null;
+    emailVerified: boolean;
+    phoneNumber?: string | null;
+    phoneNumberVerified: boolean;
+    defaultRole: string;
+    isAnonymous: boolean;
+    ticket?: string | null;
+    otpHash?: string | null;
+    totpSecret?: string | null;
+    activeMfaType?: string | null;
+    newEmail?: any | null;
+    locale: string;
+    metadata?: any | null;
+    roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+  } | null;
+};
 
 export type UpdateUserWhereMutationVariables = Exact<{
   where: Users_Bool_Exp;
   user: Users_Set_Input;
 }>;
 
-
-export type UpdateUserWhereMutation = { __typename?: 'mutation_root', updateUsers?: { __typename?: 'users_mutation_response', affected_rows: number } | null };
+export type UpdateUserWhereMutation = {
+  __typename?: 'mutation_root';
+  updateUsers?: {
+    __typename?: 'users_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type RotateUsersTicketMutationVariables = Exact<{
   oldTicket: Scalars['String'];
@@ -4089,8 +4232,13 @@ export type RotateUsersTicketMutationVariables = Exact<{
   newTicketExpiresAt: Scalars['timestamptz'];
 }>;
 
-
-export type RotateUsersTicketMutation = { __typename?: 'mutation_root', updateUsers?: { __typename?: 'users_mutation_response', affected_rows: number } | null };
+export type RotateUsersTicketMutation = {
+  __typename?: 'mutation_root';
+  updateUsers?: {
+    __typename?: 'users_mutation_response';
+    affected_rows: number;
+  } | null;
+};
 
 export type ChangeEmailsByTicketMutationVariables = Exact<{
   ticket: Scalars['String'];
@@ -4099,22 +4247,121 @@ export type ChangeEmailsByTicketMutationVariables = Exact<{
   now: Scalars['timestamptz'];
 }>;
 
-
-export type ChangeEmailsByTicketMutation = { __typename?: 'mutation_root', updateUsers?: { __typename?: 'users_mutation_response', returning: Array<{ __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> }> } | null };
+export type ChangeEmailsByTicketMutation = {
+  __typename?: 'mutation_root';
+  updateUsers?: {
+    __typename?: 'users_mutation_response';
+    returning: Array<{
+      __typename?: 'users';
+      id: any;
+      createdAt: any;
+      disabled: boolean;
+      displayName: string;
+      avatarUrl: string;
+      email?: any | null;
+      passwordHash?: string | null;
+      emailVerified: boolean;
+      phoneNumber?: string | null;
+      phoneNumberVerified: boolean;
+      defaultRole: string;
+      isAnonymous: boolean;
+      ticket?: string | null;
+      otpHash?: string | null;
+      totpSecret?: string | null;
+      activeMfaType?: string | null;
+      newEmail?: any | null;
+      locale: string;
+      metadata?: any | null;
+      roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+    }>;
+  } | null;
+};
 
 export type InsertUserMutationVariables = Exact<{
   user: Users_Insert_Input;
 }>;
 
+export type InsertUserProfileMutationVariables = Exact<{
+  profile: User_Profiles_Insert_Input;
+}>;
 
-export type InsertUserMutation = { __typename?: 'mutation_root', insertUser?: { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> } | null };
+export type InsertUserMutation = {
+  __typename?: 'mutation_root';
+  insertUser?: {
+    __typename?: 'users';
+    id: any;
+    createdAt: any;
+    disabled: boolean;
+    displayName: string;
+    avatarUrl: string;
+    email?: any | null;
+    passwordHash?: string | null;
+    emailVerified: boolean;
+    phoneNumber?: string | null;
+    phoneNumberVerified: boolean;
+    defaultRole: string;
+    isAnonymous: boolean;
+    ticket?: string | null;
+    otpHash?: string | null;
+    totpSecret?: string | null;
+    activeMfaType?: string | null;
+    newEmail?: any | null;
+    locale: string;
+    metadata?: any | null;
+    roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+  } | null;
+};
+
+export type InsertUserProfileMutation = {
+  __typename?: 'mutation_root';
+  insert_comptrac_user_profiles_one?: {
+    __typename?: 'user_profiles';
+    auth_id?: any;
+    user_id?: any;
+    role?: string;
+    disabled?: boolean;
+    email_verified?: boolean;
+    tenant_id?: any;
+    function_id?: any;
+    created_by?: any;
+    updated_by?: any;
+  } | null;
+};
 
 export type DeleteUserMutationVariables = Exact<{
   userId: Scalars['uuid'];
 }>;
 
-
-export type DeleteUserMutation = { __typename?: 'mutation_root', deleteAuthUserRoles?: { __typename?: 'authUserRoles_mutation_response', affected_rows: number } | null, deleteUser?: { __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> } | null };
+export type DeleteUserMutation = {
+  __typename?: 'mutation_root';
+  deleteAuthUserRoles?: {
+    __typename?: 'authUserRoles_mutation_response';
+    affected_rows: number;
+  } | null;
+  deleteUser?: {
+    __typename?: 'users';
+    id: any;
+    createdAt: any;
+    disabled: boolean;
+    displayName: string;
+    avatarUrl: string;
+    email?: any | null;
+    passwordHash?: string | null;
+    emailVerified: boolean;
+    phoneNumber?: string | null;
+    phoneNumberVerified: boolean;
+    defaultRole: string;
+    isAnonymous: boolean;
+    ticket?: string | null;
+    otpHash?: string | null;
+    totpSecret?: string | null;
+    activeMfaType?: string | null;
+    newEmail?: any | null;
+    locale: string;
+    metadata?: any | null;
+    roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+  } | null;
+};
 
 export type DeanonymizeUserMutationVariables = Exact<{
   userId: Scalars['uuid'];
@@ -4122,464 +4369,1029 @@ export type DeanonymizeUserMutationVariables = Exact<{
   role: Scalars['String'];
 }>;
 
-
-export type DeanonymizeUserMutation = { __typename?: 'mutation_root', updateAuthUserRoles?: { __typename?: 'authUserRoles_mutation_response', affected_rows: number } | null, updateUser?: { __typename?: 'users', id: any } | null };
+export type DeanonymizeUserMutation = {
+  __typename?: 'mutation_root';
+  updateAuthUserRoles?: {
+    __typename?: 'authUserRoles_mutation_response';
+    affected_rows: number;
+  } | null;
+  updateUser?: { __typename?: 'users'; id: any } | null;
+};
 
 export type InsertUserProviderToUserMutationVariables = Exact<{
   userProvider: AuthUserProviders_Insert_Input;
 }>;
 
-
-export type InsertUserProviderToUserMutation = { __typename?: 'mutation_root', insertAuthUserProvider?: { __typename?: 'authUserProviders', id: any } | null };
+export type InsertUserProviderToUserMutation = {
+  __typename?: 'mutation_root';
+  insertAuthUserProvider?: { __typename?: 'authUserProviders'; id: any } | null;
+};
 
 export type GetUserByTicketQueryVariables = Exact<{
   ticket: Scalars['String'];
 }>;
 
-
-export type GetUserByTicketQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> }> };
+export type GetUserByTicketQuery = {
+  __typename?: 'query_root';
+  users: Array<{
+    __typename?: 'users';
+    id: any;
+    createdAt: any;
+    disabled: boolean;
+    displayName: string;
+    avatarUrl: string;
+    email?: any | null;
+    passwordHash?: string | null;
+    emailVerified: boolean;
+    phoneNumber?: string | null;
+    phoneNumberVerified: boolean;
+    defaultRole: string;
+    isAnonymous: boolean;
+    ticket?: string | null;
+    otpHash?: string | null;
+    totpSecret?: string | null;
+    activeMfaType?: string | null;
+    newEmail?: any | null;
+    locale: string;
+    metadata?: any | null;
+    roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+  }>;
+};
 
 export type UpdateUsersByTicketMutationVariables = Exact<{
   ticket: Scalars['String'];
   user: Users_Set_Input;
 }>;
 
-
-export type UpdateUsersByTicketMutation = { __typename?: 'mutation_root', updateUsers?: { __typename?: 'users_mutation_response', affected_rows: number, returning: Array<{ __typename?: 'users', id: any, createdAt: any, disabled: boolean, displayName: string, avatarUrl: string, email?: any | null, passwordHash?: string | null, emailVerified: boolean, phoneNumber?: string | null, phoneNumberVerified: boolean, defaultRole: string, isAnonymous: boolean, ticket?: string | null, otpHash?: string | null, totpSecret?: string | null, activeMfaType?: string | null, newEmail?: any | null, locale: string, metadata?: any | null, roles: Array<{ __typename?: 'authUserRoles', role: string }> }> } | null };
+export type UpdateUsersByTicketMutation = {
+  __typename?: 'mutation_root';
+  updateUsers?: {
+    __typename?: 'users_mutation_response';
+    affected_rows: number;
+    returning: Array<{
+      __typename?: 'users';
+      id: any;
+      createdAt: any;
+      disabled: boolean;
+      displayName: string;
+      avatarUrl: string;
+      email?: any | null;
+      passwordHash?: string | null;
+      emailVerified: boolean;
+      phoneNumber?: string | null;
+      phoneNumberVerified: boolean;
+      defaultRole: string;
+      isAnonymous: boolean;
+      ticket?: string | null;
+      otpHash?: string | null;
+      totpSecret?: string | null;
+      activeMfaType?: string | null;
+      newEmail?: any | null;
+      locale: string;
+      metadata?: any | null;
+      roles: Array<{ __typename?: 'authUserRoles'; role: string }>;
+    }>;
+  } | null;
+};
 
 export const UserFieldsFragmentDoc = gql`
-    fragment userFields on users {
-  id
-  createdAt
-  disabled
-  displayName
-  avatarUrl
-  email
-  passwordHash
-  emailVerified
-  phoneNumber
-  phoneNumberVerified
-  defaultRole
-  isAnonymous
-  ticket
-  otpHash
-  totpSecret
-  activeMfaType
-  newEmail
-  locale
-  metadata
-  roles {
-    role
-  }
-}
-    `;
-export const InsertProviderRequestDocument = gql`
-    mutation insertProviderRequest($providerRequest: authProviderRequests_insert_input!) {
-  insertAuthProviderRequest(
-    object: $providerRequest
-    on_conflict: {constraint: provider_requests_pkey, update_columns: [options]}
-  ) {
+  fragment userFields on users {
     id
-    options
-  }
-}
-    `;
-export const DeleteProviderRequestDocument = gql`
-    mutation deleteProviderRequest($id: uuid!) {
-  deleteAuthProviderRequest(id: $id) {
-    id
-    options
-  }
-}
-    `;
-export const ProviderRequestDocument = gql`
-    query providerRequest($id: uuid!) {
-  authProviderRequest(id: $id) {
-    id
-    options
-  }
-}
-    `;
-export const InsertRefreshTokenDocument = gql`
-    mutation insertRefreshToken($refreshToken: authRefreshTokens_insert_input!) {
-  insertAuthRefreshToken(object: $refreshToken) {
-    id
-  }
-}
-    `;
-export const DeleteRefreshTokenDocument = gql`
-    mutation deleteRefreshToken($refreshTokenHash: String!) {
-  deleteAuthRefreshTokens(where: {refreshTokenHash: {_eq: $refreshTokenHash}}) {
-    affected_rows
-  }
-}
-    `;
-export const DeleteUserRefreshTokensDocument = gql`
-    mutation deleteUserRefreshTokens($userId: uuid!) {
-  deleteAuthRefreshTokens(where: {user: {id: {_eq: $userId}}}) {
-    affected_rows
-  }
-}
-    `;
-export const DeleteExpiredRefreshTokensDocument = gql`
-    mutation deleteExpiredRefreshTokens {
-  deleteAuthRefreshTokens(where: {expiresAt: {_lt: now}}) {
-    affected_rows
-  }
-}
-    `;
-export const UpsertRolesDocument = gql`
-    mutation upsertRoles($roles: [authRoles_insert_input!]!) {
-  insertAuthRoles(
-    objects: $roles
-    on_conflict: {constraint: roles_pkey, update_columns: []}
-  ) {
-    affected_rows
-    returning {
+    createdAt
+    disabled
+    displayName
+    avatarUrl
+    email
+    passwordHash
+    emailVerified
+    phoneNumber
+    phoneNumberVerified
+    defaultRole
+    isAnonymous
+    ticket
+    otpHash
+    totpSecret
+    activeMfaType
+    newEmail
+    locale
+    metadata
+    roles {
       role
     }
   }
-}
-    `;
+`;
+export const InsertProviderRequestDocument = gql`
+  mutation insertProviderRequest(
+    $providerRequest: authProviderRequests_insert_input!
+  ) {
+    insertAuthProviderRequest(
+      object: $providerRequest
+      on_conflict: {
+        constraint: provider_requests_pkey
+        update_columns: [options]
+      }
+    ) {
+      id
+      options
+    }
+  }
+`;
+export const DeleteProviderRequestDocument = gql`
+  mutation deleteProviderRequest($id: uuid!) {
+    deleteAuthProviderRequest(id: $id) {
+      id
+      options
+    }
+  }
+`;
+export const ProviderRequestDocument = gql`
+  query providerRequest($id: uuid!) {
+    authProviderRequest(id: $id) {
+      id
+      options
+    }
+  }
+`;
+export const InsertRefreshTokenDocument = gql`
+  mutation insertRefreshToken($refreshToken: authRefreshTokens_insert_input!) {
+    insertAuthRefreshToken(object: $refreshToken) {
+      id
+    }
+  }
+`;
+export const DeleteRefreshTokenDocument = gql`
+  mutation deleteRefreshToken($refreshTokenHash: String!) {
+    deleteAuthRefreshTokens(
+      where: { refreshTokenHash: { _eq: $refreshTokenHash } }
+    ) {
+      affected_rows
+    }
+  }
+`;
+export const DeleteUserRefreshTokensDocument = gql`
+  mutation deleteUserRefreshTokens($userId: uuid!) {
+    deleteAuthRefreshTokens(where: { user: { id: { _eq: $userId } } }) {
+      affected_rows
+    }
+  }
+`;
+export const DeleteExpiredRefreshTokensDocument = gql`
+  mutation deleteExpiredRefreshTokens {
+    deleteAuthRefreshTokens(where: { expiresAt: { _lt: now } }) {
+      affected_rows
+    }
+  }
+`;
+export const UpsertRolesDocument = gql`
+  mutation upsertRoles($roles: [authRoles_insert_input!]!) {
+    insertAuthRoles(
+      objects: $roles
+      on_conflict: { constraint: roles_pkey, update_columns: [] }
+    ) {
+      affected_rows
+      returning {
+        role
+      }
+    }
+  }
+`;
 export const GetUserSecurityKeysDocument = gql`
-    query getUserSecurityKeys($id: uuid!) {
-  authUserSecurityKeys(where: {userId: {_eq: $id}}) {
-    counter
-    credentialId
-    credentialPublicKey
-    transports
-    id
-    user {
+  query getUserSecurityKeys($id: uuid!) {
+    authUserSecurityKeys(where: { userId: { _eq: $id } }) {
+      counter
+      credentialId
+      credentialPublicKey
+      transports
       id
+      user {
+        id
+      }
     }
   }
-}
-    `;
+`;
 export const GetUserChallengeDocument = gql`
-    query getUserChallenge($id: uuid!) {
-  user(id: $id) {
-    id
-    currentChallenge
-  }
-}
-    `;
-export const UpdateUserChallengeDocument = gql`
-    mutation updateUserChallenge($userId: uuid!, $challenge: String!) {
-  updateUser(pk_columns: {id: $userId}, _set: {currentChallenge: $challenge}) {
-    id
-  }
-}
-    `;
-export const AddUserSecurityKeyDocument = gql`
-    mutation addUserSecurityKey($userSecurityKey: authUserSecurityKeys_insert_input!) {
-  insertAuthUserSecurityKey(object: $userSecurityKey) {
-    id
-  }
-}
-    `;
-export const UpdateUserSecurityKeyDocument = gql`
-    mutation updateUserSecurityKey($id: uuid!, $counter: bigint!) {
-  updateAuthUserSecurityKey(pk_columns: {id: $id}, _set: {counter: $counter}) {
-    id
-  }
-}
-    `;
-export const AuthUserProvidersDocument = gql`
-    query authUserProviders($provider: String!, $providerUserId: String!) {
-  authUserProviders(
-    where: {_and: {provider: {id: {_eq: $provider}}, providerUserId: {_eq: $providerUserId}}}
-    limit: 1
-  ) {
-    id
-    user {
-      ...userFields
+  query getUserChallenge($id: uuid!) {
+    user(id: $id) {
+      id
+      currentChallenge
     }
   }
-}
-    ${UserFieldsFragmentDoc}`;
-export const UserProviderDocument = gql`
-    query userProvider($userId: uuid!, $providerId: String!) {
-  authUserProviders(
-    where: {_and: [{userId: {_eq: $userId}}, {providerId: {_eq: $providerId}}]}
-    limit: 1
-  ) {
-    id
-    refreshToken
-  }
-}
-    `;
-export const UpdateAuthUserproviderDocument = gql`
-    mutation updateAuthUserprovider($id: uuid!, $authUserProvider: authUserProviders_set_input!) {
-  updateAuthUserProvider(pk_columns: {id: $id}, _set: $authUserProvider) {
-    id
-  }
-}
-    `;
-export const InsertUserRolesDocument = gql`
-    mutation insertUserRoles($userRoles: [authUserRoles_insert_input!]!) {
-  insertAuthUserRoles(objects: $userRoles) {
-    affected_rows
-  }
-}
-    `;
-export const DeleteUserRolesByUserIdDocument = gql`
-    mutation deleteUserRolesByUserId($userId: uuid!) {
-  deleteAuthUserRoles(where: {userId: {_eq: $userId}}) {
-    affected_rows
-  }
-}
-    `;
-export const UserDocument = gql`
-    query user($id: uuid!) {
-  user(id: $id) {
-    ...userFields
-  }
-}
-    ${UserFieldsFragmentDoc}`;
-export const UsersDocument = gql`
-    query users($where: users_bool_exp!) {
-  users(where: $where) {
-    ...userFields
-  }
-}
-    ${UserFieldsFragmentDoc}`;
-export const GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtDocument = gql`
-    mutation getUsersByRefreshTokenAndUpdateRefreshTokenExpiresAt($refreshTokenHash: String!, $expiresAt: timestamptz!) {
-  updateAuthRefreshTokens(
-    _set: {expiresAt: $expiresAt}
-    where: {_and: [{refreshTokenHash: {_eq: $refreshTokenHash}}, {user: {disabled: {_eq: false}}}, {expiresAt: {_gte: now}}]}
-  ) {
-    affected_rows
-    returning {
+`;
+export const UpdateUserChallengeDocument = gql`
+  mutation updateUserChallenge($userId: uuid!, $challenge: String!) {
+    updateUser(
+      pk_columns: { id: $userId }
+      _set: { currentChallenge: $challenge }
+    ) {
       id
     }
   }
-}
-    `;
+`;
+export const AddUserSecurityKeyDocument = gql`
+  mutation addUserSecurityKey(
+    $userSecurityKey: authUserSecurityKeys_insert_input!
+  ) {
+    insertAuthUserSecurityKey(object: $userSecurityKey) {
+      id
+    }
+  }
+`;
+export const UpdateUserSecurityKeyDocument = gql`
+  mutation updateUserSecurityKey($id: uuid!, $counter: bigint!) {
+    updateAuthUserSecurityKey(
+      pk_columns: { id: $id }
+      _set: { counter: $counter }
+    ) {
+      id
+    }
+  }
+`;
+export const AuthUserProvidersDocument = gql`
+  query authUserProviders($provider: String!, $providerUserId: String!) {
+    authUserProviders(
+      where: {
+        _and: {
+          provider: { id: { _eq: $provider } }
+          providerUserId: { _eq: $providerUserId }
+        }
+      }
+      limit: 1
+    ) {
+      id
+      user {
+        ...userFields
+      }
+    }
+  }
+  ${UserFieldsFragmentDoc}
+`;
+export const UserProviderDocument = gql`
+  query userProvider($userId: uuid!, $providerId: String!) {
+    authUserProviders(
+      where: {
+        _and: [
+          { userId: { _eq: $userId } }
+          { providerId: { _eq: $providerId } }
+        ]
+      }
+      limit: 1
+    ) {
+      id
+      refreshToken
+    }
+  }
+`;
+export const UpdateAuthUserproviderDocument = gql`
+  mutation updateAuthUserprovider(
+    $id: uuid!
+    $authUserProvider: authUserProviders_set_input!
+  ) {
+    updateAuthUserProvider(pk_columns: { id: $id }, _set: $authUserProvider) {
+      id
+    }
+  }
+`;
+export const InsertUserRolesDocument = gql`
+  mutation insertUserRoles($userRoles: [authUserRoles_insert_input!]!) {
+    insertAuthUserRoles(objects: $userRoles) {
+      affected_rows
+    }
+  }
+`;
+export const DeleteUserRolesByUserIdDocument = gql`
+  mutation deleteUserRolesByUserId($userId: uuid!) {
+    deleteAuthUserRoles(where: { userId: { _eq: $userId } }) {
+      affected_rows
+    }
+  }
+`;
+export const UserDocument = gql`
+  query user($id: uuid!) {
+    user(id: $id) {
+      ...userFields
+    }
+  }
+  ${UserFieldsFragmentDoc}
+`;
+export const UsersDocument = gql`
+  query users($where: users_bool_exp!) {
+    users(where: $where) {
+      ...userFields
+    }
+  }
+  ${UserFieldsFragmentDoc}
+`;
+export const GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtDocument = gql`
+  mutation getUsersByRefreshTokenAndUpdateRefreshTokenExpiresAt(
+    $refreshTokenHash: String!
+    $expiresAt: timestamptz!
+  ) {
+    updateAuthRefreshTokens(
+      _set: { expiresAt: $expiresAt }
+      where: {
+        _and: [
+          { refreshTokenHash: { _eq: $refreshTokenHash } }
+          { user: { disabled: { _eq: false } } }
+          { expiresAt: { _gte: now } }
+        ]
+      }
+    ) {
+      affected_rows
+      returning {
+        id
+      }
+    }
+  }
+`;
 export const GetUsersByRefreshTokenDocument = gql`
-    query getUsersByRefreshToken($refreshTokenHash: String!) {
-  authRefreshTokens(
-    where: {_and: [{refreshTokenHash: {_eq: $refreshTokenHash}}, {user: {disabled: {_eq: false}}}, {expiresAt: {_gte: now}}]}
-  ) {
-    id
-    user {
-      ...userFields
+  query getUsersByRefreshToken($refreshTokenHash: String!) {
+    authRefreshTokens(
+      where: {
+        _and: [
+          { refreshTokenHash: { _eq: $refreshTokenHash } }
+          { user: { disabled: { _eq: false } } }
+          { expiresAt: { _gte: now } }
+        ]
+      }
+    ) {
+      id
+      user {
+        ...userFields
+      }
     }
   }
-}
-    ${UserFieldsFragmentDoc}`;
+  ${UserFieldsFragmentDoc}
+`;
 export const GetUsersByPatDocument = gql`
-    query getUsersByPAT($patHash: String!) {
-  authRefreshTokens(
-    where: {_and: [{refreshTokenHash: {_eq: $patHash}}, {user: {disabled: {_eq: false}}}, {expiresAt: {_gte: now}}, {type: {_eq: pat}}]}
-  ) {
-    id
-    user {
-      ...userFields
+  query getUsersByPAT($patHash: String!) {
+    authRefreshTokens(
+      where: {
+        _and: [
+          { refreshTokenHash: { _eq: $patHash } }
+          { user: { disabled: { _eq: false } } }
+          { expiresAt: { _gte: now } }
+          { type: { _eq: pat } }
+        ]
+      }
+    ) {
+      id
+      user {
+        ...userFields
+      }
     }
   }
-}
-    ${UserFieldsFragmentDoc}`;
+  ${UserFieldsFragmentDoc}
+`;
 export const UpdateUserDocument = gql`
-    mutation updateUser($id: uuid!, $user: users_set_input!) {
-  updateUser(pk_columns: {id: $id}, _set: $user) {
-    ...userFields
+  mutation updateUser($id: uuid!, $user: users_set_input!) {
+    updateUser(pk_columns: { id: $id }, _set: $user) {
+      ...userFields
+    }
   }
-}
-    ${UserFieldsFragmentDoc}`;
+  ${UserFieldsFragmentDoc}
+`;
 export const UpdateUserWhereDocument = gql`
-    mutation updateUserWhere($where: users_bool_exp!, $user: users_set_input!) {
-  updateUsers(where: $where, _set: $user) {
-    affected_rows
+  mutation updateUserWhere($where: users_bool_exp!, $user: users_set_input!) {
+    updateUsers(where: $where, _set: $user) {
+      affected_rows
+    }
   }
-}
-    `;
+`;
 export const RotateUsersTicketDocument = gql`
-    mutation rotateUsersTicket($oldTicket: String!, $newTicket: String!, $newTicketExpiresAt: timestamptz!) {
-  updateUsers(
-    _set: {ticket: $newTicket, ticketExpiresAt: $newTicketExpiresAt}
-    where: {ticket: {_eq: $oldTicket}}
+  mutation rotateUsersTicket(
+    $oldTicket: String!
+    $newTicket: String!
+    $newTicketExpiresAt: timestamptz!
   ) {
-    affected_rows
+    updateUsers(
+      _set: { ticket: $newTicket, ticketExpiresAt: $newTicketExpiresAt }
+      where: { ticket: { _eq: $oldTicket } }
+    ) {
+      affected_rows
+    }
   }
-}
-    `;
+`;
 export const ChangeEmailsByTicketDocument = gql`
-    mutation changeEmailsByTicket($ticket: String!, $email: citext!, $newTicket: String!, $now: timestamptz!) {
-  updateUsers(
-    where: {_and: [{ticket: {_eq: $ticket}}, {ticketExpiresAt: {_gt: $now}}]}
-    _set: {email: $email, newEmail: null, ticket: $newTicket, ticketExpiresAt: $now}
+  mutation changeEmailsByTicket(
+    $ticket: String!
+    $email: citext!
+    $newTicket: String!
+    $now: timestamptz!
   ) {
-    returning {
-      ...userFields
+    updateUsers(
+      where: {
+        _and: [{ ticket: { _eq: $ticket } }, { ticketExpiresAt: { _gt: $now } }]
+      }
+      _set: {
+        email: $email
+        newEmail: null
+        ticket: $newTicket
+        ticketExpiresAt: $now
+      }
+    ) {
+      returning {
+        ...userFields
+      }
     }
   }
-}
-    ${UserFieldsFragmentDoc}`;
+  ${UserFieldsFragmentDoc}
+`;
 export const InsertUserDocument = gql`
-    mutation insertUser($user: users_insert_input!) {
-  insertUser(object: $user) {
-    ...userFields
-  }
-}
-    ${UserFieldsFragmentDoc}`;
-export const DeleteUserDocument = gql`
-    mutation deleteUser($userId: uuid!) {
-  deleteAuthUserRoles(where: {userId: {_eq: $userId}}) {
-    affected_rows
-  }
-  deleteUser(id: $userId) {
-    ...userFields
-  }
-}
-    ${UserFieldsFragmentDoc}`;
-export const DeanonymizeUserDocument = gql`
-    mutation deanonymizeUser($userId: uuid!, $avatarUrl: String, $role: String!) {
-  updateAuthUserRoles(where: {user: {id: {_eq: $userId}}}, _set: {role: $role}) {
-    affected_rows
-  }
-  updateUser(
-    pk_columns: {id: $userId}
-    _set: {avatarUrl: $avatarUrl, defaultRole: $role}
-  ) {
-    id
-  }
-}
-    `;
-export const InsertUserProviderToUserDocument = gql`
-    mutation insertUserProviderToUser($userProvider: authUserProviders_insert_input!) {
-  insertAuthUserProvider(object: $userProvider) {
-    id
-  }
-}
-    `;
-export const GetUserByTicketDocument = gql`
-    query getUserByTicket($ticket: String!) {
-  users(where: {ticket: {_eq: $ticket}}) {
-    ...userFields
-  }
-}
-    ${UserFieldsFragmentDoc}`;
-export const UpdateUsersByTicketDocument = gql`
-    mutation updateUsersByTicket($ticket: String!, $user: users_set_input!) {
-  updateUsers(
-    where: {_and: [{ticket: {_eq: $ticket}}, {ticketExpiresAt: {_gt: now}}]}
-    _set: $user
-  ) {
-    affected_rows
-    returning {
+  mutation insertUser($user: users_insert_input!) {
+    insertUser(object: $user) {
       ...userFields
     }
   }
-}
-    ${UserFieldsFragmentDoc}`;
+  ${UserFieldsFragmentDoc}
+`;
 
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
-
-
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action();
-
-export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
-  return {
-    insertProviderRequest(variables: InsertProviderRequestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<InsertProviderRequestMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<InsertProviderRequestMutation>(InsertProviderRequestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'insertProviderRequest', 'mutation');
-    },
-    deleteProviderRequest(variables: DeleteProviderRequestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteProviderRequestMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeleteProviderRequestMutation>(DeleteProviderRequestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteProviderRequest', 'mutation');
-    },
-    providerRequest(variables: ProviderRequestQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProviderRequestQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ProviderRequestQuery>(ProviderRequestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'providerRequest', 'query');
-    },
-    insertRefreshToken(variables: InsertRefreshTokenMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<InsertRefreshTokenMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<InsertRefreshTokenMutation>(InsertRefreshTokenDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'insertRefreshToken', 'mutation');
-    },
-    deleteRefreshToken(variables: DeleteRefreshTokenMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteRefreshTokenMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeleteRefreshTokenMutation>(DeleteRefreshTokenDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteRefreshToken', 'mutation');
-    },
-    deleteUserRefreshTokens(variables: DeleteUserRefreshTokensMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteUserRefreshTokensMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeleteUserRefreshTokensMutation>(DeleteUserRefreshTokensDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteUserRefreshTokens', 'mutation');
-    },
-    deleteExpiredRefreshTokens(variables?: DeleteExpiredRefreshTokensMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteExpiredRefreshTokensMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeleteExpiredRefreshTokensMutation>(DeleteExpiredRefreshTokensDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteExpiredRefreshTokens', 'mutation');
-    },
-    upsertRoles(variables: UpsertRolesMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpsertRolesMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpsertRolesMutation>(UpsertRolesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsertRoles', 'mutation');
-    },
-    getUserSecurityKeys(variables: GetUserSecurityKeysQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUserSecurityKeysQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetUserSecurityKeysQuery>(GetUserSecurityKeysDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getUserSecurityKeys', 'query');
-    },
-    getUserChallenge(variables: GetUserChallengeQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUserChallengeQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetUserChallengeQuery>(GetUserChallengeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getUserChallenge', 'query');
-    },
-    updateUserChallenge(variables: UpdateUserChallengeMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateUserChallengeMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateUserChallengeMutation>(UpdateUserChallengeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateUserChallenge', 'mutation');
-    },
-    addUserSecurityKey(variables: AddUserSecurityKeyMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AddUserSecurityKeyMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AddUserSecurityKeyMutation>(AddUserSecurityKeyDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'addUserSecurityKey', 'mutation');
-    },
-    updateUserSecurityKey(variables: UpdateUserSecurityKeyMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateUserSecurityKeyMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateUserSecurityKeyMutation>(UpdateUserSecurityKeyDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateUserSecurityKey', 'mutation');
-    },
-    authUserProviders(variables: AuthUserProvidersQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AuthUserProvidersQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AuthUserProvidersQuery>(AuthUserProvidersDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'authUserProviders', 'query');
-    },
-    userProvider(variables: UserProviderQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UserProviderQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UserProviderQuery>(UserProviderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'userProvider', 'query');
-    },
-    updateAuthUserprovider(variables: UpdateAuthUserproviderMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateAuthUserproviderMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateAuthUserproviderMutation>(UpdateAuthUserproviderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateAuthUserprovider', 'mutation');
-    },
-    insertUserRoles(variables: InsertUserRolesMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<InsertUserRolesMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<InsertUserRolesMutation>(InsertUserRolesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'insertUserRoles', 'mutation');
-    },
-    deleteUserRolesByUserId(variables: DeleteUserRolesByUserIdMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteUserRolesByUserIdMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeleteUserRolesByUserIdMutation>(DeleteUserRolesByUserIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteUserRolesByUserId', 'mutation');
-    },
-    user(variables: UserQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UserQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UserQuery>(UserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'user', 'query');
-    },
-    users(variables: UsersQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UsersQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UsersQuery>(UsersDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'users', 'query');
-    },
-    getUsersByRefreshTokenAndUpdateRefreshTokenExpiresAt(variables: GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutation>(GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getUsersByRefreshTokenAndUpdateRefreshTokenExpiresAt', 'mutation');
-    },
-    getUsersByRefreshToken(variables: GetUsersByRefreshTokenQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUsersByRefreshTokenQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetUsersByRefreshTokenQuery>(GetUsersByRefreshTokenDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getUsersByRefreshToken', 'query');
-    },
-    getUsersByPAT(variables: GetUsersByPatQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUsersByPatQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetUsersByPatQuery>(GetUsersByPatDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getUsersByPAT', 'query');
-    },
-    updateUser(variables: UpdateUserMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateUserMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateUserMutation>(UpdateUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateUser', 'mutation');
-    },
-    updateUserWhere(variables: UpdateUserWhereMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateUserWhereMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateUserWhereMutation>(UpdateUserWhereDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateUserWhere', 'mutation');
-    },
-    rotateUsersTicket(variables: RotateUsersTicketMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<RotateUsersTicketMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<RotateUsersTicketMutation>(RotateUsersTicketDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'rotateUsersTicket', 'mutation');
-    },
-    changeEmailsByTicket(variables: ChangeEmailsByTicketMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ChangeEmailsByTicketMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ChangeEmailsByTicketMutation>(ChangeEmailsByTicketDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'changeEmailsByTicket', 'mutation');
-    },
-    insertUser(variables: InsertUserMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<InsertUserMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<InsertUserMutation>(InsertUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'insertUser', 'mutation');
-    },
-    deleteUser(variables: DeleteUserMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteUserMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeleteUserMutation>(DeleteUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteUser', 'mutation');
-    },
-    deanonymizeUser(variables: DeanonymizeUserMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeanonymizeUserMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeanonymizeUserMutation>(DeanonymizeUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deanonymizeUser', 'mutation');
-    },
-    insertUserProviderToUser(variables: InsertUserProviderToUserMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<InsertUserProviderToUserMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<InsertUserProviderToUserMutation>(InsertUserProviderToUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'insertUserProviderToUser', 'mutation');
-    },
-    getUserByTicket(variables: GetUserByTicketQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetUserByTicketQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetUserByTicketQuery>(GetUserByTicketDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getUserByTicket', 'query');
-    },
-    updateUsersByTicket(variables: UpdateUsersByTicketMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateUsersByTicketMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<UpdateUsersByTicketMutation>(UpdateUsersByTicketDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateUsersByTicket', 'mutation');
+export const InsertUserProfileDocument = gql`
+  mutation insertUserProfile($profile: comptrac_user_profiles_insert_input!) {
+    insert_comptrac_user_profiles_one(object: $profile) {
+      auth_id
     }
+  }
+`;
+export const DeleteUserDocument = gql`
+  mutation deleteUser($userId: uuid!) {
+    deleteAuthUserRoles(where: { userId: { _eq: $userId } }) {
+      affected_rows
+    }
+    deleteUser(id: $userId) {
+      ...userFields
+    }
+  }
+  ${UserFieldsFragmentDoc}
+`;
+export const DeanonymizeUserDocument = gql`
+  mutation deanonymizeUser($userId: uuid!, $avatarUrl: String, $role: String!) {
+    updateAuthUserRoles(
+      where: { user: { id: { _eq: $userId } } }
+      _set: { role: $role }
+    ) {
+      affected_rows
+    }
+    updateUser(
+      pk_columns: { id: $userId }
+      _set: { avatarUrl: $avatarUrl, defaultRole: $role }
+    ) {
+      id
+    }
+  }
+`;
+export const InsertUserProviderToUserDocument = gql`
+  mutation insertUserProviderToUser(
+    $userProvider: authUserProviders_insert_input!
+  ) {
+    insertAuthUserProvider(object: $userProvider) {
+      id
+    }
+  }
+`;
+export const GetUserByTicketDocument = gql`
+  query getUserByTicket($ticket: String!) {
+    users(where: { ticket: { _eq: $ticket } }) {
+      ...userFields
+    }
+  }
+  ${UserFieldsFragmentDoc}
+`;
+export const UpdateUsersByTicketDocument = gql`
+  mutation updateUsersByTicket($ticket: String!, $user: users_set_input!) {
+    updateUsers(
+      where: {
+        _and: [{ ticket: { _eq: $ticket } }, { ticketExpiresAt: { _gt: now } }]
+      }
+      _set: $user
+    ) {
+      affected_rows
+      returning {
+        ...userFields
+      }
+    }
+  }
+  ${UserFieldsFragmentDoc}
+`;
+
+export type SdkFunctionWrapper = <T>(
+  action: (requestHeaders?: Record<string, string>) => Promise<T>,
+  operationName: string,
+  operationType?: string
+) => Promise<T>;
+
+const defaultWrapper: SdkFunctionWrapper = (
+  action,
+  _operationName,
+  _operationType
+) => action();
+
+export function getSdk(
+  client: GraphQLClient,
+  withWrapper: SdkFunctionWrapper = defaultWrapper
+) {
+  return {
+    insertProviderRequest(
+      variables: InsertProviderRequestMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<InsertProviderRequestMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InsertProviderRequestMutation>(
+            InsertProviderRequestDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'insertProviderRequest',
+        'mutation'
+      );
+    },
+    deleteProviderRequest(
+      variables: DeleteProviderRequestMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<DeleteProviderRequestMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeleteProviderRequestMutation>(
+            DeleteProviderRequestDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'deleteProviderRequest',
+        'mutation'
+      );
+    },
+    providerRequest(
+      variables: ProviderRequestQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<ProviderRequestQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ProviderRequestQuery>(
+            ProviderRequestDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'providerRequest',
+        'query'
+      );
+    },
+    insertRefreshToken(
+      variables: InsertRefreshTokenMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<InsertRefreshTokenMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InsertRefreshTokenMutation>(
+            InsertRefreshTokenDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'insertRefreshToken',
+        'mutation'
+      );
+    },
+    deleteRefreshToken(
+      variables: DeleteRefreshTokenMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<DeleteRefreshTokenMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeleteRefreshTokenMutation>(
+            DeleteRefreshTokenDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'deleteRefreshToken',
+        'mutation'
+      );
+    },
+    deleteUserRefreshTokens(
+      variables: DeleteUserRefreshTokensMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<DeleteUserRefreshTokensMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeleteUserRefreshTokensMutation>(
+            DeleteUserRefreshTokensDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'deleteUserRefreshTokens',
+        'mutation'
+      );
+    },
+    deleteExpiredRefreshTokens(
+      variables?: DeleteExpiredRefreshTokensMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<DeleteExpiredRefreshTokensMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeleteExpiredRefreshTokensMutation>(
+            DeleteExpiredRefreshTokensDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'deleteExpiredRefreshTokens',
+        'mutation'
+      );
+    },
+    upsertRoles(
+      variables: UpsertRolesMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpsertRolesMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpsertRolesMutation>(UpsertRolesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'upsertRoles',
+        'mutation'
+      );
+    },
+    getUserSecurityKeys(
+      variables: GetUserSecurityKeysQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetUserSecurityKeysQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetUserSecurityKeysQuery>(
+            GetUserSecurityKeysDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'getUserSecurityKeys',
+        'query'
+      );
+    },
+    getUserChallenge(
+      variables: GetUserChallengeQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetUserChallengeQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetUserChallengeQuery>(
+            GetUserChallengeDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'getUserChallenge',
+        'query'
+      );
+    },
+    updateUserChallenge(
+      variables: UpdateUserChallengeMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpdateUserChallengeMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateUserChallengeMutation>(
+            UpdateUserChallengeDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'updateUserChallenge',
+        'mutation'
+      );
+    },
+    addUserSecurityKey(
+      variables: AddUserSecurityKeyMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<AddUserSecurityKeyMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AddUserSecurityKeyMutation>(
+            AddUserSecurityKeyDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'addUserSecurityKey',
+        'mutation'
+      );
+    },
+    updateUserSecurityKey(
+      variables: UpdateUserSecurityKeyMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpdateUserSecurityKeyMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateUserSecurityKeyMutation>(
+            UpdateUserSecurityKeyDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'updateUserSecurityKey',
+        'mutation'
+      );
+    },
+    authUserProviders(
+      variables: AuthUserProvidersQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<AuthUserProvidersQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AuthUserProvidersQuery>(
+            AuthUserProvidersDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'authUserProviders',
+        'query'
+      );
+    },
+    userProvider(
+      variables: UserProviderQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UserProviderQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UserProviderQuery>(UserProviderDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userProvider',
+        'query'
+      );
+    },
+    updateAuthUserprovider(
+      variables: UpdateAuthUserproviderMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpdateAuthUserproviderMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateAuthUserproviderMutation>(
+            UpdateAuthUserproviderDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'updateAuthUserprovider',
+        'mutation'
+      );
+    },
+    insertUserRoles(
+      variables: InsertUserRolesMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<InsertUserRolesMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InsertUserRolesMutation>(
+            InsertUserRolesDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'insertUserRoles',
+        'mutation'
+      );
+    },
+    deleteUserRolesByUserId(
+      variables: DeleteUserRolesByUserIdMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<DeleteUserRolesByUserIdMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeleteUserRolesByUserIdMutation>(
+            DeleteUserRolesByUserIdDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'deleteUserRolesByUserId',
+        'mutation'
+      );
+    },
+    user(
+      variables: UserQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UserQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UserQuery>(UserDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'user',
+        'query'
+      );
+    },
+    users(
+      variables: UsersQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UsersQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UsersQuery>(UsersDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'users',
+        'query'
+      );
+    },
+    getUsersByRefreshTokenAndUpdateRefreshTokenExpiresAt(
+      variables: GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtMutation>(
+            GetUsersByRefreshTokenAndUpdateRefreshTokenExpiresAtDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'getUsersByRefreshTokenAndUpdateRefreshTokenExpiresAt',
+        'mutation'
+      );
+    },
+    getUsersByRefreshToken(
+      variables: GetUsersByRefreshTokenQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetUsersByRefreshTokenQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetUsersByRefreshTokenQuery>(
+            GetUsersByRefreshTokenDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'getUsersByRefreshToken',
+        'query'
+      );
+    },
+    getUsersByPAT(
+      variables: GetUsersByPatQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetUsersByPatQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetUsersByPatQuery>(GetUsersByPatDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'getUsersByPAT',
+        'query'
+      );
+    },
+    updateUser(
+      variables: UpdateUserMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpdateUserMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateUserMutation>(UpdateUserDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'updateUser',
+        'mutation'
+      );
+    },
+    updateUserWhere(
+      variables: UpdateUserWhereMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpdateUserWhereMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateUserWhereMutation>(
+            UpdateUserWhereDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'updateUserWhere',
+        'mutation'
+      );
+    },
+    rotateUsersTicket(
+      variables: RotateUsersTicketMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<RotateUsersTicketMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<RotateUsersTicketMutation>(
+            RotateUsersTicketDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'rotateUsersTicket',
+        'mutation'
+      );
+    },
+    changeEmailsByTicket(
+      variables: ChangeEmailsByTicketMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<ChangeEmailsByTicketMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ChangeEmailsByTicketMutation>(
+            ChangeEmailsByTicketDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'changeEmailsByTicket',
+        'mutation'
+      );
+    },
+    insertUser(
+      variables: InsertUserMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<InsertUserMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InsertUserMutation>(InsertUserDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'insertUser',
+        'mutation'
+      );
+    },
+    insertUserProfile(
+      variables: InsertUserProfileMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<InsertUserProfileMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InsertUserProfileMutation>(
+            InsertUserProfileDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'insertUserProfile',
+        'mutation'
+      );
+    },
+    deleteUser(
+      variables: DeleteUserMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<DeleteUserMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeleteUserMutation>(DeleteUserDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'deleteUser',
+        'mutation'
+      );
+    },
+    deanonymizeUser(
+      variables: DeanonymizeUserMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<DeanonymizeUserMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeanonymizeUserMutation>(
+            DeanonymizeUserDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'deanonymizeUser',
+        'mutation'
+      );
+    },
+    insertUserProviderToUser(
+      variables: InsertUserProviderToUserMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<InsertUserProviderToUserMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InsertUserProviderToUserMutation>(
+            InsertUserProviderToUserDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'insertUserProviderToUser',
+        'mutation'
+      );
+    },
+    getUserByTicket(
+      variables: GetUserByTicketQueryVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<GetUserByTicketQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetUserByTicketQuery>(
+            GetUserByTicketDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'getUserByTicket',
+        'query'
+      );
+    },
+    updateUsersByTicket(
+      variables: UpdateUsersByTicketMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpdateUsersByTicketMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateUsersByTicketMutation>(
+            UpdateUsersByTicketDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        'updateUsersByTicket',
+        'mutation'
+      );
+    },
   };
 }
 export type Sdk = ReturnType<typeof getSdk>;
