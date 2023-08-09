@@ -1153,6 +1153,19 @@ export type AuthUserProviders_Insert_Input = {
   userId?: InputMaybe<Scalars['uuid']>;
 };
 
+export type AuthUserProfile_Insert_Input = {
+
+  role?: InputMaybe<Scalars['String']>;
+  disabled?: InputMaybe<Scalars['Int']>;
+  emailVerified?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+  auth_id?: InputMaybe<Scalars['uuid']>;
+  function_id?: InputMaybe<Scalars['uuid']>;
+  created_by?: InputMaybe<Scalars['uuid']>;
+  updated_by?: InputMaybe<Scalars['uuid']>;
+};
+
+
 /** aggregate max on columns */
 export type AuthUserProviders_Max_Fields = {
   __typename?: 'authUserProviders_max_fields';
@@ -3492,6 +3505,7 @@ export type Users_Insert_Input = {
   totpSecret?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['timestamptz']>;
   userProviders?: InputMaybe<AuthUserProviders_Arr_Rel_Insert_Input>;
+  profile?: InputMaybe<AuthUserProfile_Insert_Input>;
 };
 
 /** aggregate max on columns */

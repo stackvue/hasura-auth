@@ -134,7 +134,16 @@ export const createUserAndSendVerificationEmail = async (
       data: allowedRoles.map((role: string) => ({ role })),
     },
     metadata,
-  });
+    profile: {
+      role: defaultRole,
+      disabled: ENV.AUTH_DISABLE_NEW_USERS ? 1 : 0,
+      emailVerified: 0,
+      tenant_id: metadata?.tenantId,
+      function_id: metadata?.functionId,
+      created_by: metadata?.createdBy,
+      updated_by: metadata?.createdBy
+    }
+});
 
   await sendEmailIfNotVerified({
     email,
