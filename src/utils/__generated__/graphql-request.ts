@@ -1147,6 +1147,7 @@ export type User_Profiles_Insert_Input = {
   role?: InputMaybe<Scalars['String']>;
   disabled?: InputMaybe<Scalars['Boolean']>;
   email_verified?: InputMaybe<Scalars['Boolean']>;
+  display_name?: InputMaybe<Scalars['String']>;
   user_id?: InputMaybe<Scalars['uuid']>;
   auth_id?: InputMaybe<Scalars['uuid']>;
   tenant_id?: InputMaybe<Scalars['uuid']>;
@@ -4320,6 +4321,7 @@ export type InsertUserProfileMutation = {
     user_id?: any;
     role?: string;
     disabled?: boolean;
+    display_name?: string;
     email_verified?: boolean;
     tenant_id?: any;
     function_id?: any;

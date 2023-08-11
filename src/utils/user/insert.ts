@@ -19,6 +19,7 @@ export const insertUser = async (user: UserInput): Promise<UserOutput> => {
   const profile = {
     auth_id: insertUser.id,
     user_id: insertUser.id,
+    display_name: insertUser.displayName,
     role: user.defaultRole,
     disabled: ENV.AUTH_DISABLE_NEW_USERS,
     email_verified: false,
