@@ -62,7 +62,7 @@ export const ldapSignInHandler: RequestHandler<
       url: process.env.AUTH_PROVIDER_LDAP_URL || 'http://localhost:389',
       // tlsOptions: { rejectUnauthorized: false }
     },
-    userDn: `${process.env.AUTH_PROVIDER_LDAP_USERNAME_ATTR}=${username},${process.env.AUTH_PROVIDER_LDAP_DN}`, // from ENV
+    userDn: username, // from ENV
     userPassword: password,
     userSearchBase: process.env.AUTH_PROVIDER_LDAP_SB, // from ENV
     usernameAttribute: process.env.AUTH_PROVIDER_LDAP_USERNAME_ATTR, //to do from ENV

@@ -1146,10 +1146,13 @@ export type AuthUserProviders_Insert_Input = {
 export type User_Profiles_Insert_Input = {
   role?: InputMaybe<Scalars['String']>;
   disabled?: InputMaybe<Scalars['Boolean']>;
+  email?: InputMaybe<Scalars['citext']>;
   email_verified?: InputMaybe<Scalars['Boolean']>;
   display_name?: InputMaybe<Scalars['String']>;
   user_id?: InputMaybe<Scalars['uuid']>;
   auth_id?: InputMaybe<Scalars['uuid']>;
+  first_name?: InputMaybe<Scalars['String']>;
+  last_name?: InputMaybe<Scalars['String']>;
   tenant_id?: InputMaybe<Scalars['uuid']>;
   function_id?: InputMaybe<Scalars['uuid']>;
   created_by?: InputMaybe<Scalars['uuid']>;
@@ -4320,9 +4323,12 @@ export type InsertUserProfileMutation = {
     auth_id?: any;
     user_id?: any;
     role?: string;
+    email?: any | null;
     disabled?: boolean;
     display_name?: string;
     email_verified?: boolean;
+    first_name?: string;
+    last_name?: string;
     tenant_id?: any;
     function_id?: any;
     created_by?: any;
