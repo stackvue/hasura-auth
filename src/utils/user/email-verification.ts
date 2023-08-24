@@ -133,8 +133,8 @@ export const createUserAndSendVerificationEmail = async (
       // restructure user roles to be inserted in GraphQL mutation
       data: allowedRoles.map((role: string) => ({ role })),
     },
-    metadata,
-  });
+    metadata
+});
 
   await sendEmailIfNotVerified({
     email,
