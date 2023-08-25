@@ -45,15 +45,16 @@ function auth() {
                 case 0:
                     userOtions = {
                         ldapOpts: {
-                            url: 'ldap://localhost:8389'
+                            url: 'ldap://ldap.forumsys.com:389'
                         },
-                        userDn: 'admin@comptrac.com',
-                        userPassword: 'Secure@1234',
-                        userSearchBase: 'ou=Employees,dc=comptrac,dc=com',
-                        usernameAttribute: 'userPrincipalName',
-                        username: 'admin@comptrac.com'
-                        // attributes: [ldap_attr.email,ldap_attr.phone]
-                        // starttls: false
+                        // adminDn: 'cn=admin,ou=users,dc=mtr,dc=com',
+                        // adminPassword: 'itachi',
+                        userDn: 'uid=curie,dc=example,dc=com',
+                        userPassword: 'password',
+                        userSearchBase: 'dc=example,dc=com',
+                        usernameAttribute: 'uid',
+                        username: 'curie',
+                        attributes: ['mail', 'cn']
                     };
                     return [4 /*yield*/, (0, ldap_authentication_1.authenticate)(userOtions)];
                 case 1:

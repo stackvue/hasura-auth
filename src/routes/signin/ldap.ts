@@ -62,7 +62,7 @@ export const ldapSignInHandler: RequestHandler<
       url: process.env.AUTH_PROVIDER_LDAP_URL || 'http://localhost:389',
       // tlsOptions: { rejectUnauthorized: false }
     },
-    userDn: username, // from ENV
+    userDn: process.env.AUTH_PROVIDER_LDAP_DN?.replace('_username_',username), // from ENV
     userPassword: password,
     userSearchBase: process.env.AUTH_PROVIDER_LDAP_SB, // from ENV
     usernameAttribute: process.env.AUTH_PROVIDER_LDAP_USERNAME_ATTR, //to do from ENV
@@ -76,6 +76,8 @@ export const ldapSignInHandler: RequestHandler<
     // attributes: [ldap_attr.email,ldap_attr.phone]
     // starttls: false
   };
+
+  logger.info(options);
 
   try {
     ldapUserProfile = await authenticate(options);
