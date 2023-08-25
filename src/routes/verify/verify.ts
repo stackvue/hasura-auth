@@ -69,6 +69,12 @@ export const verifyHandler: RequestHandler<
         emailVerified: true,
       },
     });
+    await gqlSdk.updateUserProfile({
+      id: user.id,
+      profile : {
+        email_verified: true
+      }
+    });
   } else if (type === EMAIL_TYPES.CONFIRM_CHANGE) {
     // * Send an error if the new email is already used by another user
     // * This check is also done when requesting a new email, but is done again here as
