@@ -1,5 +1,7 @@
 import { RequestHandler } from 'express';
 import { authenticate } from 'ldap-authentication';
+import * as crypto from 'crypto';
+import * as fs from 'fs';
 
 import {
   getUserByEmail,
@@ -30,6 +32,35 @@ export const ldapSignInSchema = Joi.object({
   password: password.required(),
 }).meta({ className: 'LdapSignInSchema' });
 
+// export function encryptText(plainText: string) {
+//   return crypto.publicEncrypt(
+//     {
+//       key: fs.readFileSync(`${process.env.ENCRYPTION_PUBLIC_KEY_PATH}`, 'utf8'),
+//       padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+//       oaepHash: 'sha256',
+//     },
+//     // We convert the data string to a buffer
+//     Buffer.from(plainText)
+//   );
+// }
+
+export function decryptText(encryptedText: any) {
+  return crypto.privateDecrypt(
+    {
+      key: fs.readFileSync(
+        `${process.env.DECRYPTION_PRIVATE_KEY_PATH}`,
+        'utf8'
+      ),
+      // In order to decrypt the data, we need to specify the
+      // same hashing function and padding scheme that we used to
+      // encrypt the data in the previous step
+      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+      oaepHash: 'sha256',
+    },
+    encryptedText
+  );
+}
+
 export const ldapSignInHandler: RequestHandler<
   {},
   {},
@@ -57,13 +88,28 @@ export const ldapSignInHandler: RequestHandler<
   //     search_base = `${process.env.AUTH_PROVIDER_LDAP_DN}`
   //   }
   //   const dn = `${process.env.AUTH_PROVIDER_LDAP_UID}=${username},${search_base}`
+  // ecncript with public key
+  // decrypt with private key
+
+  // const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
+  //   // The standard secure default length for RSA keys is 2048 bits
+  //   modulusLength: 2048,
+  // });
+
+  // const encryptedText = encryptText(password);
+
+  // logger.info(`encypted data: ${encryptedText.toString('base64')}`);
+
+  const decryptedPassword = decryptText(Buffer.from(password, 'base64'));
+  const decryptedPasswordText = decryptedPassword.toString();
+
   const options = {
     ldapOpts: {
       url: process.env.AUTH_PROVIDER_LDAP_URL || 'http://localhost:389',
       // tlsOptions: { rejectUnauthorized: false }
     },
-    userDn: process.env.AUTH_PROVIDER_LDAP_DN?.replace('_username_',username), // from ENV
-    userPassword: password,
+    userDn: process.env.AUTH_PROVIDER_LDAP_DN?.replace('_username_', username), // from ENV
+    userPassword: decryptedPasswordText,
     userSearchBase: process.env.AUTH_PROVIDER_LDAP_SB, // from ENV
     usernameAttribute: process.env.AUTH_PROVIDER_LDAP_USERNAME_ATTR, //to do from ENV
     username: username,
@@ -111,7 +157,8 @@ export const ldapSignInHandler: RequestHandler<
       user = await getUserByEmail(ldapUserProfile[ldap_attr.email]);
     }
     if (!user) {
-      if(process.env.AUTH_PROVIDER_LDAP_ALLOW_AUTO_SIGNUP == 'false') return sendError(res, 'user-not-found');
+      if (process.env.AUTH_PROVIDER_LDAP_ALLOW_AUTO_SIGNUP == 'false')
+        return sendError(res, 'user-not-found');
       // * No user found with this email. Create a new user
       const passwordHash = null;
       const email = ldapUserProfile[ldap_attr.email];
@@ -157,8 +204,8 @@ export const ldapSignInHandler: RequestHandler<
   }
 
   if (user) {
-    if(user.disabled) return sendError(res, 'disabled-user', {}, true);
-    if(!user.emailVerified) return sendError(res, 'unverified-user', {}, true);
+    if (user.disabled) return sendError(res, 'disabled-user', {}, true);
+    if (!user.emailVerified) return sendError(res, 'unverified-user', {}, true);
     const signInTokens = await getSignInResponse({
       userId: user.id,
       checkMFA: false,
