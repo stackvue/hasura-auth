@@ -58,6 +58,9 @@ export const ENV = {
     // note: false disables SSL (deprecated)
     return castBooleanEnv('AUTH_SMTP_SECURE', false);
   },
+  get AUTH_SMTP_TLS_REJECT_UNAUTHORIZED() {
+    return castBooleanEnv('AUTH_SMTP_TLS_REJECT_UNAUTHORIZED', true);
+  },
 
   // SMS
   get AUTH_SMS_PROVIDER() {
