@@ -115,10 +115,10 @@ export const ldapSignInHandler: RequestHandler<
       // tlsOptions: { rejectUnauthorized: false }
     },
     userDn: process.env.AUTH_PROVIDER_LDAP_DN?.replace('_username_', username), // from ENV
-    userPassword: decryptedPasswordText,
     userSearchBase: process.env.AUTH_PROVIDER_LDAP_SB, // from ENV
     usernameAttribute: process.env.AUTH_PROVIDER_LDAP_USERNAME_ATTR, //to do from ENV
     username: username,
+    userPassword: '*****',
     attributes: [
       ldap_attr.email,
       ldap_attr.name,
@@ -130,6 +130,7 @@ export const ldapSignInHandler: RequestHandler<
   };
 
   logger.info(options);
+  options.userPassword = decryptedPasswordText
 
   try {
     ldapUserProfile = await authenticate(options);
