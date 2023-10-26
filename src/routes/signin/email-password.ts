@@ -55,8 +55,16 @@ export const signInEmailPasswordHandler: RequestHandler<
     return sendError(res, 'invalid-email-password');
   }
 
-  const decryptedPassword = decryptText(Buffer.from(password, 'base64'));
-  const decryptedPasswordText = decryptedPassword.toString();
+  let decryptedPasswordText = password;
+  if (process.env.DECRYPTION_ENABLED == 'true') {
+    try {
+      const decryptedPassword = decryptText(Buffer.from(decryptedPasswordText, 'base64'));
+      decryptedPasswordText = decryptedPassword.toString();
+    } catch {
+      return sendError(res, 'invalid-email-password');
+    }
+  }
+
   const isPasswordCorrect = await bcrypt.compare(decryptedPasswordText, user.passwordHash);
 
   if (!isPasswordCorrect) {
