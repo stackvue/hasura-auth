@@ -1,7 +1,6 @@
 // TODO this library takes more than one third of the time required by hasura-auth to load
 import Email from 'email-templates';
 import nodemailer from 'nodemailer';
-import fs from 'fs';
 
 import { ENV } from './utils/env';
 import { EmailLocals, renderTemplate } from './templates';
@@ -17,7 +16,7 @@ const transport = nodemailer.createTransport({
   port: Number(ENV.AUTH_SMTP_PORT),
   secure: Boolean(ENV.AUTH_SMTP_SECURE),
   auth: {
-    pass: fs.readFileSync(`${process.env.AUTH_SMTP_PASSWORD_FILE}`, 'utf8').replace('\n',''),
+    pass: ENV.AUTH_SMTP_PASS,
     user: ENV.AUTH_SMTP_USER,
   },
   tls: {
