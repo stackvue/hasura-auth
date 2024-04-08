@@ -1146,10 +1146,13 @@ export type AuthUserProviders_Insert_Input = {
 export type User_Profiles_Insert_Input = {
   role?: InputMaybe<Scalars['String']>;
   disabled?: InputMaybe<Scalars['Boolean']>;
+  email?: InputMaybe<Scalars['citext']>;
   email_verified?: InputMaybe<Scalars['Boolean']>;
   display_name?: InputMaybe<Scalars['String']>;
   user_id?: InputMaybe<Scalars['uuid']>;
   auth_id?: InputMaybe<Scalars['uuid']>;
+  first_name?: InputMaybe<Scalars['String']>;
+  last_name?: InputMaybe<Scalars['String']>;
   tenant_id?: InputMaybe<Scalars['uuid']>;
   function_id?: InputMaybe<Scalars['uuid']>;
   created_by?: InputMaybe<Scalars['uuid']>;
@@ -3616,6 +3619,22 @@ export enum Users_Select_Column_Users_Aggregate_Bool_Exp_Bool_Or_Arguments_Colum
   PhoneNumberVerified = 'phoneNumberVerified',
 }
 
+
+export type User_Profiles_Set_Input = {
+  role?: InputMaybe<Scalars['String']>;
+  disabled?: InputMaybe<Scalars['Boolean']>;
+  email?: InputMaybe<Scalars['citext']>;
+  email_verified?: InputMaybe<Scalars['Boolean']>;
+  display_name?: InputMaybe<Scalars['String']>;
+  user_id?: InputMaybe<Scalars['uuid']>;
+  auth_id?: InputMaybe<Scalars['uuid']>;
+  first_name?: InputMaybe<Scalars['String']>;
+  last_name?: InputMaybe<Scalars['String']>;
+  tenant_id?: InputMaybe<Scalars['uuid']>;
+  function_id?: InputMaybe<Scalars['uuid']>;
+  created_by?: InputMaybe<Scalars['uuid']>;
+  updated_by?: InputMaybe<Scalars['uuid']>;
+};
 /** input type for updating data in table "auth.users" */
 export type Users_Set_Input = {
   activeMfaType?: InputMaybe<Scalars['String']>;
@@ -4182,6 +4201,31 @@ export type GetUsersByPatQuery = {
   }>;
 };
 
+export type UpdateUserProfileMutationVariables = Exact<{
+  id: Scalars['uuid'];
+  profile: User_Profiles_Set_Input;
+}>;
+
+export type UpdateUserProfileMutation = {
+  __typename?: 'mutation_root';
+  update_comptrac_user_profiles_by_pk?: {
+    __typename?: 'user_profiles';
+    auth_id?: any;
+    user_id?: any;
+    role?: string;
+    email?: any | null;
+    disabled?: boolean;
+    display_name?: string;
+    email_verified?: boolean;
+    first_name?: string;
+    last_name?: string;
+    tenant_id?: any;
+    function_id?: any;
+    created_by?: any;
+    updated_by?: any;
+  } | null;
+};
+
 export type UpdateUserMutationVariables = Exact<{
   id: Scalars['uuid'];
   user: Users_Set_Input;
@@ -4320,9 +4364,12 @@ export type InsertUserProfileMutation = {
     auth_id?: any;
     user_id?: any;
     role?: string;
+    email?: any | null;
     disabled?: boolean;
     display_name?: string;
     email_verified?: boolean;
+    first_name?: string;
+    last_name?: string;
     tenant_id?: any;
     function_id?: any;
     created_by?: any;
@@ -4751,6 +4798,14 @@ export const UpdateUserDocument = gql`
     }
   }
   ${UserFieldsFragmentDoc}
+`;
+
+export const UpdateUserProfileDocument = gql`
+  mutation updateUserProfile($id: uniqueidentifier!, $profile: comptrac_user_profiles_set_input!) {
+    update_comptrac_user_profiles_by_pk(pk_columns: { user_id: $id }, _set: $profile) {
+      auth_id
+    }
+  }
 `;
 export const UpdateUserWhereDocument = gql`
   mutation updateUserWhere($where: users_bool_exp!, $user: users_set_input!) {
@@ -5243,6 +5298,20 @@ export function getSdk(
             ...wrappedRequestHeaders,
           }),
         'updateUser',
+        'mutation'
+      );
+    },
+    updateUserProfile(
+      variables: UpdateUserProfileMutationVariables,
+      requestHeaders?: Dom.RequestInit['headers']
+    ): Promise<UpdateUserProfileMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateUserMutation>(UpdateUserProfileDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'updateUserProfile',
         'mutation'
       );
     },

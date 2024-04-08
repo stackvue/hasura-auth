@@ -26,7 +26,6 @@ const sendEmailIfNotVerified = async ({
   redirectTo: string;
 }) => {
   if (
-    !ENV.AUTH_DISABLE_NEW_USERS &&
     ENV.AUTH_EMAIL_SIGNIN_EMAIL_VERIFIED_REQUIRED &&
     !user.emailVerified
   ) {

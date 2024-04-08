@@ -9,6 +9,8 @@ import { logger } from './logger';
 /**
  * SMTP transport.
  */
+
+
 const transport = nodemailer.createTransport({
   host: ENV.AUTH_SMTP_HOST,
   port: Number(ENV.AUTH_SMTP_PORT),
@@ -16,6 +18,10 @@ const transport = nodemailer.createTransport({
   auth: {
     pass: ENV.AUTH_SMTP_PASS,
     user: ENV.AUTH_SMTP_USER,
+  },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: Boolean(ENV.AUTH_SMTP_TLS_REJECT_UNAUTHORIZED),
   },
   authMethod: ENV.AUTH_SMTP_AUTH_METHOD,
 });

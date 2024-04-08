@@ -47,6 +47,21 @@ async function auth() {
   //   username: 'nimal@gmail.com',
   // })
 
+
+  // const userOtions = {
+  //   ldapOpts: {
+  //     url: 'ldap://localhost:8389',
+  //     // tlsOptions: { rejectUnauthorized: false }
+  //   },
+  //   userDn: 'admin@comptrac.com', // from ENV
+  //   userPassword: 'Secure@1234',
+  //   userSearchBase: 'ou=Employees,dc=comptrac,dc=com', // from ENV
+  //   usernameAttribute: 'userPrincipalName', //to do from ENV
+  //   username: 'admin@comptrac.com'
+  //   // attributes: [ldap_attr.email,ldap_attr.phone]
+  //   // starttls: false
+  // }
+
   const user = await authenticate(userOtions)
 
   console.log(user)
